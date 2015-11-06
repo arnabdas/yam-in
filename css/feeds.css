@@ -164,3 +164,8 @@
   border: 1px solid #ccc;
   border-left: 3px solid #bbb;
 }
+
+.msg_liked_by_others {
+  color: #39628E;
+  cursor: pointer;
+}

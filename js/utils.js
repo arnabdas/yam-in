@@ -344,6 +344,15 @@ Swarm.utils = {
         });
       }
     });
+  container.off('click', '.feed_main .msg_liked_by_others')
+      .on('click', '.feed_main .msg_liked_by_others', function () {
+        
+        var target = $(this),
+        msg_main = target.parents(".msg_main"),
+        msgId = msg_main.data("msg-id");
+        Swarm.utils.displayLikedUsers(msgId);
+
+    });
    container.off('click','.feed_main .msg_body .yammer-object').
             on('click','.feed_main .msg_body .yammer-object', function(e){
         e.stopPropagation();
@@ -357,6 +366,35 @@ Swarm.utils = {
 
     });
 
+},
+
+displayLikedUsers: function(msgId) {
+  var container = $("#content");
+  jQuery.ajax({
+            type :"GET",
+            url : "https://www.yammer.com/api/v1/users/liked_message/"+msgId+ ".json",
+            dataType: 'json',
+            xhrFields: {
+                withCredentials: false
+            },
+            success : function(data){
+                container.slimScroll().off('slimscroll');
+                container.slimScroll().removeData('events');
+                Swarm.utils.hideLoadingIcon();
+                Swarm.api.pushCurrentView('liked-people:'+msgId);
+                Swarm.api.displayBackButton();
+                swarmInstance.bindBackButtonEvent();
+
+                data.users.forEach(function (d, i) {
+                  d.mugshot_url_template = d.mugshot_url_template.replace("{width}x{height}","36x36");
+                });
+                container.empty().html(Swarm.templates.persons({ 'users': data.users }));
+                swarmInstance.peopleService.bindPersonLiveEvent();
+            },
+            error : function(){
+                alert("error");
+            }
+  });
 },
 
 showProfile: function (data) {

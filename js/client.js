@@ -70,6 +70,10 @@ Swarm.Client.prototype = {
        groupId = previousView.slice(7);
        previousView = 'groups';
       }
+      else if(previousView.indexOf('liked-people') != -1) {
+        msgId = previousView.slice(13);
+        previousView = 'liked-people';
+      }
       switch (previousView){
         case "feeds" :
           self.makeActiveTab('Feeds', 'Feeds');
@@ -127,6 +131,12 @@ Swarm.Client.prototype = {
           pageTitle.html('<div class="mui-form-group"><input type="text" id="search" value="'+query+'" class="mui-form-control mui-empty mui-dirty" /><label><i class="material-icons">search</i>Search</label></div>');
           pageTitle.find('input').focus();
           self.searchService.init(query);
+        case "liked-people":
+            container.empty();
+            container.slimScroll().off('slimscroll');
+            container.slimScroll().removeData('events');
+            Swarm.utils.hideLoadingIcon();
+            Swarm.utils.displayLikedUsers(msgId);
         }
 
     });

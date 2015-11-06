@@ -60,7 +60,9 @@
 				{{#each likedBy.names}}
 					<span class="msg_liked_by" data-user-id="{{user_id}}">{{full_name}}</span>
 				{{/each}}
-				{{#if likedBy.count}} and {{likedBy.count}} others like this.{{/if}}
+				{{#if likedBy.count}} and {{likedBy.count}} 
+				<span class="msg_liked_by_others" > others </span>
+				like this.{{/if}}
 				{{#unless likedBy.count}} likes this.{{/unless}}
 			</div>
 		</div>

@@ -248,7 +248,7 @@ this["Swarm"]["templates"]["threads"] = Handlebars.template({"1":function(depth0
 
   return " and "
     + this.escapeExpression(this.lambda(((stack1 = (depth0 != null ? depth0.likedBy : depth0)) != null ? stack1.count : stack1), depth0))
-    + " others like this.";
+    + " \n				<span class=\"msg_liked_by_others\" > others </span>\n				like this.";
 },"9":function(depth0,helpers,partials,data) {
     return " likes this.";
 },"11":function(depth0,helpers,partials,data) {
