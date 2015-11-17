@@ -1,6 +1,6 @@
 
 chrome.alarms.onAlarm.addListener(function () {
-	
+
 	chrome.storage.local.get(function(result){
 		var lastMsgId = result.lastMsgId;
 		var accessToken = result.newAccessToken;
@@ -27,7 +27,7 @@ chrome.alarms.onAlarm.addListener(function () {
 
                     var lastMessage = data.messages[0],
                     references = data.references,
-                    senderArrObj = $.grep(references, function (e) 
+                    senderArrObj = $.grep(references, function (e)
                                         { return e.type === 'user' && e.id == lastMessage.sender_id; });
                     if(lastNotifiedMsgId != lastMessage.id || lastNotifiedMsgId == undefined ) {
                         chrome.storage.local.set({'lastNotifiedMsgId': lastMessage.id});
@@ -35,17 +35,17 @@ chrome.alarms.onAlarm.addListener(function () {
                         if (Notification.permission !== "granted") {
                             Notification.requestPermission();
                         } else {
-                            var notification = new Notification("Message from "+sender.full_name, { 
-                                    body:lastMessage.body.plain,icon: "./img/yammerlogo.png" });
+                            var notification = new Notification("Message from "+sender.full_name, {
+                                    body:lastMessage.body.plain,icon: "./img/plugin-logo-default.png" });
                             setTimeout(notification.close.bind(notification), 6000);
                         }
                     }
-            	
+
                 }
             	else {
             		//console.log("empty messages");
             	}
-          	
+
     		},
     		error : function(){
     			//alert("background js error");
@@ -53,5 +53,5 @@ chrome.alarms.onAlarm.addListener(function () {
   	  });
 	}
 	});
-	
+
 });

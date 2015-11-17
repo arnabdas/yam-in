@@ -1,14 +1,14 @@
 {
-  "name": "Yammer Plugin",
+  "name": "Yam'in",
   "version": "0.2.1",
   "description": "Chrome Plugin for Yammer",
   "icons": {
-    "128": "./img/yammerlogo.png"
+    "128": "./img/plugin-logo-default.png"
   },
   "manifest_version":2,
   "browser_action": {
-    "default_icon": "./img/yammerlogo.png",
-    "default_title": "Yammer Plugin",
+    "default_icon": "./img/plugin-logo-default.png",
+    "default_title": "Yam'in",
     "default_popup": "home.html"
   },
   "content_scripts": [
@@ -26,7 +26,7 @@
     "notifications"
   ],
   "web_accessible_resources" : [
-    "oauth2/oauth2.html","./img/yammerlogo.png"
+    "oauth2/oauth2.html","./img/plugin-logo-default.png"
   ],
   "background": {
     "scripts": ["libs/js/jquery-2.1.1.js", "background.js"]

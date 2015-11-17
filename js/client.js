@@ -33,7 +33,7 @@ Swarm.Client.prototype = {
   },
 
   initBackgroundTasks: function () {
-    //chrome.storage.local.set({'newImagePath': '/img/yammerlogo_notifier.png'});
+    //chrome.storage.local.set({'newImagePath': '/img/plugin-logo-notifier.png'});
     // create alarm for polling new messages every 1 minutes
     chrome.alarms.create('checkNewTasks', {
         when: 1000,
