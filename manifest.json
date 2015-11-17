@@ -1,6 +1,6 @@
 {
   "name": "Yam'in",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Chrome Plugin for Yammer",
   "icons": {
     "128": "./img/plugin-logo-default.png"
