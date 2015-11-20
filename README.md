@@ -1,7 +1,7 @@
-# Swarm
+# Yam'in
 #### Chrome plugin for Yammer
 
-Swarm was built to increase employee engagement on Yammer by integrating the Yammer experience to the browser in the form of a plugin so they don't have to switch tabs to stay connected to the Enterprise network.
+Yam'in was built to increase employee engagement on Yammer by integrating the Yammer experience to the browser in the form of a plugin so they don't have to switch tabs to stay connected to the Enterprise network.
 
 ### Features
 - Threaded view of conversations
@@ -45,4 +45,5 @@ The project is available under MIT License. Find the full license text [here](./
 - Krishnam G 
 - Manoj P
 - Mohan T
+- Prabin B
 - Risav V
