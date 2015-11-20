@@ -10,7 +10,9 @@ var gulp = require('gulp'),
   manifest = require('./manifest.json'),
   project = require('./package.json'),
   crx = require('gulp-crx'),
-  fs = require('fs');
+  zip = require('gulp-zip'),
+  fs = require('fs'),
+  packageInfo = require('./package.json');
 
 var paths = {
   'swarm:js:src': ['js/namespace.js', 'js/**/*.js'],
@@ -77,6 +79,8 @@ gulp.task('watch:templates', function () {
 });
 
 gulp.task('create:dist', ['build:src', 'build:templates', 'move:plugin:src']);
+/*
+This task has been depreciated over the zip task
 gulp.task('create:crx', ['create:dist'], function() {
   return gulp.src('./dist')
     .pipe(crx({
@@ -86,7 +90,12 @@ gulp.task('create:crx', ['create:dist'], function() {
       updateXmlFilename: 'update.xml'
     }))
     .pipe(gulp.dest('./releases'));
-});
-gulp.task('release', ['create:crx']);
+});*/
+gulp.task('create:zip', ['create:dist'], function () {
+  return gulp.src('./dist')
+    .pipe(zip("yam-in-" + packageInfo.version + ".zip"))
+    .pipe(gulp.dest('./releases'));
+})
+gulp.task('release', ['create:zip']);
 
 gulp.task('default', ['build:src', 'build:templates', 'watch:src', 'watch:templates']);
