@@ -23,9 +23,10 @@ Yam'in was built to increase employee engagement on Yammer by integrating the Ya
 Its not yet published to chrome web store, right now it can run only developer mode,
 
 + Clone or download zip from [https://github.com/manoj535/Yam-in](https://github.com/manoj535/Yam-in)
++ Run the command `gulp build:src` and `gulp build:templates` in the \<cloned\> directory.
 + Open Chrome *Settings* page, click on *Extensions*
 + Check *Developer mode* check box.
-+ Click on *Load unpacked extension* and navigate to the extracted folder.
++ Click on *Load unpacked extension* and navigate to the \<cloned\>/build folder.
 
 Now your yammer feed plugin is installed.
 

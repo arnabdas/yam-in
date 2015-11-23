@@ -11,7 +11,6 @@ var gulp = require('gulp'),
   project = require('./package.json'),
   crx = require('gulp-crx'),
   fs = require('fs'),
-  replace = require('gulp-replace'),
   zip = require('gulp-zip');
 
 var paths = {
@@ -19,7 +18,8 @@ var paths = {
   'swarm:templates:src': ['app/templates/*.hbs'],
   'swarm:css:src': ['app/css/feeds.css', 'app/css/profile.css', 'app/css/overrides.css', 'app/css/loading.css', 'app/css/templates.css'],
   'swarm:plugin:src': ['app/img/**/*', 'app/libs/css/**/*', 'app/libs/js/**/*', 'app/oauth2/**/*', 'app/background.js', 'app/popup.js', 'app/manifest.json', 'app/home.html'],
-  'swarm:plugin:dist': 'dist/'+manifest.name+'-'+manifest.version
+  'swarm:plugin:build': ['app/build'],
+  'swarm:plugin:dist': 'dist/' + manifest.name+'-'+manifest.version
 };
 
 var options = {
@@ -52,7 +52,10 @@ gulp.task('build:css', ['move:fonts'], function () {
     .pipe(gulp.dest('build/css'));
 });
 
-gulp.task('build:src', ['build:js', 'build:css']);
+gulp.task('build:src', ['build:js', 'build:css'], function(){
+  gulp.src(paths['swarm:plugin:src'], { base: './app' })
+    .pipe(gulp.dest('build'));
+});
 
 gulp.task('build:templates', function () {
   gulp.src(paths['swarm:templates:src'])
@@ -82,18 +85,15 @@ gulp.task('move:plugin:src', function () {
 gulp.task('create:dist', ['build:src', 'build:templates', 'move:plugin:src'], function(){
   gulp.src(['build/js/*min.js','build/css/*min.css', 'build/fonts/*', 'build/js/*.templates.js'], { base: './build' })
     .pipe(gulp.dest(paths['swarm:plugin:dist']));
-  return gulp.src(paths['swarm:plugin:dist']+'/home.html')
-    .pipe(replace('../build/', './'))
-    .pipe(gulp.dest(paths['swarm:plugin:dist']));
 });
 
 gulp.task('create:zip', ['create:dist'], function () {
   gulp.src(paths['swarm:plugin:dist'])
     .pipe(zip(manifest.name+'-'+manifest.version + ".zip"))
-    .pipe(gulp.dest('./releases'));
+    .pipe(gulp.dest('dist'));
 })
 
-gulp.task('create:crx', ['create:dist'], function() {
+/*gulp.task('create:crx', ['create:dist'], function() {
   return gulp.src(paths['swarm:plugin:dist'])
     .pipe(crx({
       privateKey: fs.readFileSync('./dist.pem', 'utf8'),
@@ -102,7 +102,8 @@ gulp.task('create:crx', ['create:dist'], function() {
       updateXmlFilename: 'update.xml'
     }))
     .pipe(gulp.dest('./releases'));
-});
-gulp.task('release', ['create:zip', 'create:crx']);
+});*/
+
+gulp.task('release', ['create:zip']);
 
 gulp.task('default', ['build:src', 'build:templates', 'watch:src', 'watch:templates']);
