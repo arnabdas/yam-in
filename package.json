@@ -15,7 +15,9 @@
     "gulp-uglify": "^1.2.0",
     "gulp-watch": "^4.2.4",
     "gulp-wrap": "^0.11.0",
-    "handlebars": "^3.0.3"
+    "handlebars": "^3.0.3",
+    "gulp-replace": "^0.5.4",
+    "gulp-zip": "^3.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -53,6 +55,10 @@
     {
       "name": "Kiran Danduprolu",
       "email": "kiran.d@imaginea.com"
+    },
+    {
+      "name": "Prabin Banka",
+      "email": "prabin.banka@imaginea.com"
     }
   ],
   "private": true,
