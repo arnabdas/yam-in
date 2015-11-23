@@ -1,3 +1,39 @@
+.progress-bar {
+    opacity: 0.3;
+    position: absolute;
+    display: block;
+    height: 2px;
+    animation-duration: 5s;
+    animation-name: progressBar;
+    animation-iteration-count: infinite;
+    background-color: #76c5c8;
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#87d4d7), color-stop(100%,#8bfbff));
+    height: 2px;
+    width: 0%;
+    background-size: 24em .25em;
+    top: 0;
+    left: 0;
+    position: relative;
+}
+@-webkit-keyframes progress-bar {
+    0% {
+        width: 0
+    }
+
+    100% {
+        width: 100%
+    }
+}
+
+@keyframes progressBar {
+    0% {
+        width: 0
+    }
+
+    100% {
+        width: 100%
+    }
+}
 .main-container {
 	position: relative;
 	display: block;

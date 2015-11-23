@@ -16,7 +16,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Yam'in</a>
+			<a class="navbar-brand" href="#"><span><img src="img/plugin-logo-default-32x32.png" style="margin-bottom: 17px; margin-right: -3px;" />am'in</span></a>
 		</div>
 		<div class="navbar-collapse" id="myNavbar"
 			 style="margin: 10px 10px 2px 0;">
@@ -49,11 +49,14 @@
 		<div class="col-sm-1 control_center">
 			<button disabled="" class="btn prev disabled control_button"><span class="glyphicon glyphicon-chevron-left"></span></button>
 		</div>
-		<div class="col-sm-10">
-			<div class="scrollbar">
+
+		<div class="col-sm-10" style="position:relative;">
+			<div class="progress-bar" id="progressBar" style="position:absolute">
+			</div>
+			<!--div class="scrollbar">
 				<div class="handle">
 				</div>
-			</div>
+			</div-->
 
 			<div class="frame">
 				<ul class="slidee">
@@ -163,7 +166,7 @@
 		var frame = $('.frame');
 		var wrap = frame.parent();
 
-		frame.sly({
+		var sly = frame.sly({
 			horizontal: 1,
 			itemNav: 'forceCentered',
 			smart: 1,
@@ -188,6 +191,18 @@
 			// Buttons
 			prev: wrap.parent().find('.prev'),
 			next: wrap.parent().find('.next')
+		});
+		frame.sly('on', 'active', function(eventName, itemIndex){
+			$('.progress-bar').hide();
+			setTimeout(function(){
+				$('.progress-bar').show();
+			});
+		})
+		frame.sly('on', 'pause', function(eventName){
+			$('.progress-bar').hide();
+		});
+		frame.sly('on', 'resume', function(eventName){
+			$('.progress-bar').show();
 		});
 	}());
 </script>
