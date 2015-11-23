@@ -1,0 +1,109 @@
+.main-container {
+	position: relative;
+	display: block;
+	top: 20px;
+}
+
+.main-row {
+	margin: 50px 0px 50px 0px;
+}
+.main-header{
+	margin-top: 40px;
+	margin-bottom: 0px;
+	text-align: center;
+	color: white;
+}
+.lead {
+	text-align: center;
+	color: rgba(255,255,255,0.5);
+	padding-top: 10px;
+}
+h1{
+	font-size: 36px;
+}
+h2 {
+	text-transform: uppercase;
+	margin-bottom: 40px;
+	font-size: 24px;
+}
+
+h3 {
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 10px;
+	margin-top: 40px;
+}
+
+p {
+	font-size: 18px;
+	color: rgba(255, 255, 255, 0.75);
+	line-height: 1.5;
+}
+.navbar-inverse{
+	background-color: rgba(34, 34, 34, 0.1);
+	border-color: rgba(8, 8, 8, 0.02);
+}
+.navbar-inverse .navbar-nav>li>a, .btn-color {
+	color: white;
+}
+.navbar-header>.navbar-brand{
+	font-size: 30px;
+	font-weight: bold;
+	color: #FFF;
+}
+.frame {
+	height: 470px;
+	line-height: 250px;
+	overflow: hidden;
+}
+.frame ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-size: 50px;
+}
+.frame ul li {
+	float: left;
+	width: 650px;
+	height: 100%;
+	margin: 0 275px 0 50px;
+	padding: 0;
+	background: none;
+	color: #ddd;
+	text-align: center;
+	cursor: pointer;
+}
+.frame ul li.active {
+	color: #fff;
+	background: none;
+}
+
+/* Scrollbar */
+.scrollbar {
+	margin: 0 0 0 0;
+	height: 2px;
+	background: rgba(204, 204, 204, 0.12);
+	line-height: 0;
+}
+.scrollbar .handle {
+	width: 50px;
+	height: 100%;
+	background: #fff;
+	cursor: pointer;
+}
+.btn:hover {
+	background: rgba(0, 0, 0, 0.50);
+	text-decoration: none;
+	color:white;
+}
+.control_center{
+	height:470px;
+	line-height: 35;
+}
+.control_button{
+	background: rgba(0, 0, 0, 0.05);
+}
+.navbar-nav>li{
+	margin: 0 3px 0 3px;
+}
