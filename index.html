@@ -200,10 +200,18 @@
 			});
 		})
 		frame.sly('on', 'pause', function(eventName){
-			$('.custom-progress-bar').hide();
+			//$('.custom-progress-bar').hide();
+			$('.custom-progress-bar').css("-webkit-animation-play-state", "paused")
 		});
 		frame.sly('on', 'resume', function(eventName){
-			$('.custom-progress-bar').show();
+			//$('.custom-progress-bar').show();
+			$('.custom-progress-bar').css("-webkit-animation-play-state", "running");
+			$('.custom-progress-bar').hide();
+			setTimeout(function(){
+				$('.custom-progress-bar').show();
+			});
+
+
 		});
 	}());
 </script>
