@@ -51,7 +51,8 @@
 		</div>
 
 		<div class="col-sm-10" style="position:relative;">
-			<div class="progress-bar" id="progressBar" style="position:absolute">
+			<div class="custom-progress-bar" style="position:absolute; text-align:right;">
+			<img src="img/plugin-logo-progress-bar.png" style="position:relative; top:-15px;" />
 			</div>
 			<!--div class="scrollbar">
 				<div class="handle">
@@ -193,16 +194,16 @@
 			next: wrap.parent().find('.next')
 		});
 		frame.sly('on', 'active', function(eventName, itemIndex){
-			$('.progress-bar').hide();
+			$('.custom-progress-bar').hide();
 			setTimeout(function(){
-				$('.progress-bar').show();
+				$('.custom-progress-bar').show();
 			});
 		})
 		frame.sly('on', 'pause', function(eventName){
-			$('.progress-bar').hide();
+			$('.custom-progress-bar').hide();
 		});
 		frame.sly('on', 'resume', function(eventName){
-			$('.progress-bar').show();
+			$('.custom-progress-bar').show();
 		});
 	}());
 </script>
