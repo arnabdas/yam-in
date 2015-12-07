@@ -83,12 +83,12 @@ gulp.task('move:plugin:src', function () {
 });
 
 gulp.task('create:dist', ['build:src', 'build:templates', 'move:plugin:src'], function(){
-  gulp.src(['build/js/*min.js','build/css/*min.css', 'build/fonts/*', 'build/js/*.templates.js'], { base: './build' })
+  return gulp.src(['build/js/*min.js','build/css/*min.css', 'build/fonts/*', 'build/js/*.templates.js'], { base: './build' })
     .pipe(gulp.dest(paths['swarm:plugin:dist']));
 });
 
 gulp.task('create:zip', ['create:dist'], function () {
-  gulp.src(paths['swarm:plugin:dist'])
+  return gulp.src(paths['swarm:plugin:dist']+'/**/*')
     .pipe(zip(manifest.name+'-'+manifest.version + ".zip"))
     .pipe(gulp.dest('dist'));
 })
