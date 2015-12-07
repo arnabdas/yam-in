@@ -9,7 +9,7 @@ var gulp = require('gulp'),
   sourcemaps = require('gulp-sourcemaps'),
   manifest = require('./app/manifest.json'),
   project = require('./package.json'),
-  crx = require('gulp-crx'),
+  crx = require('gulp-crx-pack'),
   fs = require('fs'),
   zip = require('gulp-zip');
 
