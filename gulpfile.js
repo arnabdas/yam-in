@@ -11,14 +11,15 @@ var gulp = require('gulp'),
   project = require('./package.json'),
   crx = require('gulp-crx-pack'),
   fs = require('fs'),
-  zip = require('gulp-zip');
+  zip = require('gulp-zip'),
+  del = require('del');
 
 var paths = {
   'swarm:js:src': ['app/js/namespace.js', 'app/js/**/*.js'],
   'swarm:templates:src': ['app/templates/*.hbs'],
   'swarm:css:src': ['app/css/feeds.css', 'app/css/profile.css', 'app/css/overrides.css', 'app/css/loading.css', 'app/css/templates.css'],
   'swarm:plugin:src': ['app/img/**/*', 'app/libs/css/**/*', 'app/libs/js/**/*', 'app/oauth2/**/*', 'app/background.js', 'app/popup.js', 'app/manifest.json', 'app/home.html'],
-  'swarm:plugin:build': ['app/build'],
+  'swarm:plugin:build': ['build'],
   'swarm:plugin:dist': 'dist/' + manifest.name+'-'+manifest.version
 };
 
@@ -107,3 +108,7 @@ gulp.task('create:zip', ['create:dist'], function () {
 gulp.task('release', ['create:zip']);
 
 gulp.task('default', ['build:src', 'build:templates', 'watch:src', 'watch:templates']);
+
+gulp.task('clean', function(){
+  return del(['build/**', 'dist/**']);
+});
