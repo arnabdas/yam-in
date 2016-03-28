@@ -20,7 +20,9 @@ Yam'in was built to increase employee engagement on Yammer by integrating the Ya
 
 ### How do I install this?
 
-Its not yet published to chrome web store, right now it can run only developer mode,
+Its published to chrome web store, checkout and install plugin from here [https://goo.gl/qJ5KsX]
+
+Also you can install in developer mode, follow the steps below.
 
 + Clone or download zip from [https://github.com/manoj535/Yam-in](https://github.com/manoj535/Yam-in)
 + Open Chrome *Settings* page, click on *Extensions*
