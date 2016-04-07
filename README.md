@@ -24,7 +24,7 @@ Its published to chrome web store, checkout and install plugin from here [https:
 
 Also you can install in developer mode, follow the steps below.
 
-+ Clone or download zip from [https://github.com/manoj535/Yam-in](https://github.com/manoj535/Yam-in)
++ Clone or download zip from [https://github.com/Imaginea/yam-in](https://github.com/Imaginea/yam-in)
 + Open Chrome *Settings* page, click on *Extensions*
 + Check *Developer mode* check box.
 + Click on *Load unpacked extension* and navigate to the extracted folder.
