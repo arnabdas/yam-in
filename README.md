@@ -20,10 +20,13 @@ Yam'in was built to increase employee engagement on Yammer by integrating the Ya
 
 ### How do I install this?
 
-Its not yet published to chrome web store, right now it can run only developer mode,
+Its published to chrome web store, checkout and install plugin from here [https://goo.gl/qJ5KsX]
 
-+ Clone or download zip from [https://github.com/manoj535/Yam-in](https://github.com/manoj535/Yam-in)
-+ Run the command `gulp build:src` and `gulp build:templates` in the \<cloned\> directory.
+Also you can install in developer mode, follow the steps below.
+
++ Clone or download zip from [https://github.com/Imaginea/yam-in](https://github.com/Imaginea/yam-in)
++ Install gulp and all dev dependencies (you can find them in package.json). 
++ Run the command `gulp build:src` and `gulp build:templates` in the <cloned> directory.
 + Open Chrome *Settings* page, click on *Extensions*
 + Check *Developer mode* check box.
 + Click on *Load unpacked extension* and navigate to the \<cloned\>/build folder.
