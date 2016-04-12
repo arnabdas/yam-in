@@ -7,18 +7,20 @@ var gulp = require('gulp'),
   concat = require('gulp-concat'),
   minify_css = require('gulp-minify-css'),
   sourcemaps = require('gulp-sourcemaps'),
-  manifest = require('./manifest.json'),
+  manifest = require('./app/manifest.json'),
   project = require('./package.json'),
-  crx = require('gulp-crx'),
-  zip = require('gulp-zip'),
+  crx = require('gulp-crx-pack'),
   fs = require('fs'),
-  packageInfo = require('./package.json');
+  zip = require('gulp-zip'),
+  del = require('del');
 
 var paths = {
-  'swarm:js:src': ['js/namespace.js', 'js/**/*.js'],
-  'swarm:templates:src': ['templates/*.hbs'],
-  'swarm:css:src': ['css/feeds.css', 'css/profile.css', 'css/overrides.css', 'css/loading.css', 'css/templates.css'],
-  'swarm:plugin:src': ['build/**/*', 'img/**/*', 'libs/css/**/*', 'libs/js/**/*', 'oauth2/**/*', 'background.js', 'popup.js', 'manifest.json', 'home.html']
+  'swarm:js:src': ['app/js/namespace.js', 'app/js/**/*.js'],
+  'swarm:templates:src': ['app/templates/*.hbs'],
+  'swarm:css:src': ['app/css/feeds.css', 'app/css/profile.css', 'app/css/overrides.css', 'app/css/loading.css', 'app/css/templates.css'],
+  'swarm:plugin:src': ['app/img/**/*', 'app/libs/css/**/*', 'app/libs/js/**/*', 'app/oauth2/**/*', 'app/background.js', 'app/popup.js', 'app/manifest.json', 'app/home.html'],
+  'swarm:plugin:build': ['build'],
+  'swarm:plugin:dist': 'dist/' + manifest.name+'-'+manifest.version
 };
 
 var options = {
@@ -29,17 +31,12 @@ var options = {
 };
 
 gulp.task('move:fonts', function () {
-  gulp.src(['libs/fonts/**/*'], { base: 'libs' })
+  gulp.src(['app/libs/fonts/**/*'], { base: 'app/libs' })
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('move:plugin:src', function () {
-  gulp.src(paths['swarm:plugin:src'], { base: './' })
-    .pipe(gulp.dest('dist'));
-});
-
 gulp.task('build:js', function () {
-  gulp.src(paths['swarm:js:src'])
+  return gulp.src(paths['swarm:js:src'])
     .pipe(concat('swarm.js'))
     .pipe(gulp.dest('build/js'))
     .pipe(uglify())
@@ -48,7 +45,7 @@ gulp.task('build:js', function () {
 });
 
 gulp.task('build:css', ['move:fonts'], function () {
-  gulp.src(paths['swarm:css:src'])
+  return gulp.src(paths['swarm:css:src'])
     .pipe(concat('swarm.css'))
     .pipe(gulp.dest('build/css'))
     .pipe(minify_css())
@@ -56,7 +53,10 @@ gulp.task('build:css', ['move:fonts'], function () {
     .pipe(gulp.dest('build/css'));
 });
 
-gulp.task('build:src', ['build:js', 'build:css']);
+gulp.task('build:src', ['build:js', 'build:css'], function(){
+  gulp.src(paths['swarm:plugin:src'], { base: './app' })
+    .pipe(gulp.dest('build'));
+});
 
 gulp.task('build:templates', function () {
   gulp.src(paths['swarm:templates:src'])
@@ -78,11 +78,24 @@ gulp.task('watch:templates', function () {
   gulp.watch(paths['swarm:templates:src'], ['build:templates']);
 });
 
-gulp.task('create:dist', ['build:src', 'build:templates', 'move:plugin:src']);
-/*
-This task has been depreciated over the zip task
-gulp.task('create:crx', ['create:dist'], function() {
-  return gulp.src('./dist')
+gulp.task('move:plugin:src', function () {
+  return gulp.src(paths['swarm:plugin:src'], { base: './app' })
+    .pipe(gulp.dest(paths['swarm:plugin:dist']));
+});
+
+gulp.task('create:dist', ['build:src', 'build:templates', 'move:plugin:src'], function(){
+  return gulp.src(['build/js/*min.js','build/css/*min.css', 'build/fonts/*', 'build/js/*.templates.js'], { base: './build' })
+    .pipe(gulp.dest(paths['swarm:plugin:dist']));
+});
+
+gulp.task('create:zip', ['create:dist'], function () {
+  return gulp.src(paths['swarm:plugin:dist']+'/**/*')
+    .pipe(zip(manifest.name+'-'+manifest.version + ".zip"))
+    .pipe(gulp.dest('dist'));
+})
+
+/*gulp.task('create:crx', ['create:dist'], function() {
+  return gulp.src(paths['swarm:plugin:dist'])
     .pipe(crx({
       privateKey: fs.readFileSync('./dist.pem', 'utf8'),
       filename: manifest.name + '-' + manifest.version + '.crx',
@@ -91,11 +104,11 @@ gulp.task('create:crx', ['create:dist'], function() {
     }))
     .pipe(gulp.dest('./releases'));
 });*/
-gulp.task('create:zip', ['create:dist'], function () {
-  return gulp.src('./dist')
-    .pipe(zip("yam-in-" + packageInfo.version + ".zip"))
-    .pipe(gulp.dest('./releases'));
-})
+
 gulp.task('release', ['create:zip']);
 
 gulp.task('default', ['build:src', 'build:templates', 'watch:src', 'watch:templates']);
+
+gulp.task('clean', function(){
+  return del(['build/**', 'dist/**']);
+});

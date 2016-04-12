@@ -2,6 +2,7 @@
   "name": "Yam'in",
   "version": "1.0.0",
   "description": "Chrome Plugin for Yammer",
+  "short_name": "Yam'in",
   "icons": {
     "128": "./img/plugin-logo-default.png"
   },
@@ -11,6 +12,12 @@
     "default_title": "Yam'in",
     "default_popup": "home.html"
   },
+  "keywords": [
+    "Chrome",
+    "Pramati",
+    "Yammer",
+    "Yam'in"
+  ],
   "content_scripts": [
     {
       "matches": ["https://www.yammer.com/robots.txt*"],

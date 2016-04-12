@@ -25,9 +25,11 @@ Its published to chrome web store, checkout and install plugin from here [https:
 Also you can install in developer mode, follow the steps below.
 
 + Clone or download zip from [https://github.com/Imaginea/yam-in](https://github.com/Imaginea/yam-in)
++ Install gulp and all dev dependencies (you can find them in package.json). 
++ Run the command `gulp build:src` and `gulp build:templates` in the <cloned> directory.
 + Open Chrome *Settings* page, click on *Extensions*
 + Check *Developer mode* check box.
-+ Click on *Load unpacked extension* and navigate to the extracted folder.
++ Click on *Load unpacked extension* and navigate to the \<cloned\>/build folder.
 
 Now your yammer feed plugin is installed.
 
