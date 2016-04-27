@@ -1,3 +1,7 @@
+/*common styles goes here*/
+body{
+	padding-top: 25px;
+}
 .custom-progress-bar {
     animation-duration: 5s;
     animation-name: progressBar;
@@ -6,7 +10,7 @@
     height: 2px;
     width: 0%;
     background-size: 24em .25em;
-    top: 0;
+    //top: 0;
     left: 0;
 }
 @keyframes progressBar {
@@ -21,7 +25,7 @@
 .main-container {
 	position: relative;
 	display: block;
-	top: 20px;
+	top: -34px;
 }
 
 .main-row {
@@ -38,43 +42,28 @@
 	color: rgba(255,255,255,0.5);
 	padding-top: 10px;
 }
-h1{
-	font-size: 36px;
-}
 h2 {
 	text-transform: uppercase;
 	margin-bottom: 40px;
-	font-size: 24px;
 }
 
 h3 {
-	font-size: 18px;
 	font-weight: 700;
 	margin-bottom: 10px;
 	margin-top: 40px;
 }
 
 p {
-	font-size: 18px;
 	color: rgba(255, 255, 255, 0.75);
 	line-height: 1.5;
 }
-.navbar-inverse{
-	background-color: rgba(34, 34, 34, 0.1);
-	border-color: rgba(8, 8, 8, 0.02);
-}
-.navbar-inverse .navbar-nav>li>a, .btn-color {
-	color: white;
-}
-.navbar-header>.navbar-brand{
-	font-size: 30px;
-	font-weight: bold;
-	color: #FFF;
-}
 .frame {
 	height: 470px;
-	line-height: 250px;
+	//line-height: 250px;
 	overflow: hidden;
+	width: 300px;
+	max-width: 600px;
+	margin: 0 auto;
 }
 .frame ul {
 	list-style: none;
@@ -82,21 +71,23 @@ p {
 	padding: 0;
 	height: 100%;
 	font-size: 50px;
+	width: 100%;
 }
 .frame ul li {
 	float: left;
-	width: 650px;
+	width: 300px;
 	height: 100%;
-	margin: 0 275px 0 50px;
+	/*margin: 0 275px 0 50px;*/
 	padding: 0;
 	background: none;
 	color: #ddd;
 	text-align: center;
-	cursor: pointer;
+	cursor: default;
 }
 .frame ul li.active {
 	color: #fff;
 	background: none;
+	list-style: none;
 }
 
 /* Scrollbar */
@@ -123,7 +114,200 @@ p {
 }
 .control_button{
 	background: rgba(0, 0, 0, 0.05);
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
 }
-.navbar-nav>li{
-	margin: 0 3px 0 3px;
+.disabled{
+	cursor: not-allowed;
+}
+
+ul#menu {
+    padding: 0;
+}
+
+ul#menu li {
+    display: inline;
+}
+
+ul#menu li a:hover {
+    background-color: transparent;
+
+}
+
+.pContent{
+	display: block;
+}
+html *
+{
+   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+   font-weight: normal;
+}
+.chrome-image{
+	width: 30px;
+    position: relative;
+    right: 10px;
+    top: 5px;
+}
+.github-image{
+	font-size: 25px;
+	color: white;
+}
+
+
+/*mobile styles goes here*/
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+	.frame ul li {
+		color: #fff;
+		background: none;
+		list-style: none;
+	}
+	h1{
+		font-size: 15px;
+	}
+	h2 {
+		font-size: 14px;
+		margin-bottom: 0;
+	}
+	h3{
+		font-size: 16px;
+	}
+	p {
+		font-size: 12px;
+	}
+	.custom-progress-bar {
+	    top: 17px;
+	}
+	.image-size{
+		max-width: 70%;
+	}
+	.list-item {
+		max-width: 600px;
+	    width: 100%;
+	    margin: 0 auto;
+	    overflow: auto;
+	    max-height: 100%;
+	    text-align: center;
+	    position: relative;
+    	top: 30px;
+	}
+	.chrome-image{
+		width: 25px;
+	    position: relative;
+	    right: 10px;
+	    top: 3px;
+	}
+	.github-image{
+		font-size: 23px;
+		color: white;
+	}
+	.control_button{
+		display: none;
+	}
+}
+
+/*tablet styles comee here*/
+@media only screen and (min-width: 600px), only screen and (min-device-width: 600px) {
+	.frame ul li {
+		color: #fff;
+		background: none;
+		list-style: none;
+	}
+	h1{
+		font-size: 17px;
+	}
+	h2 {
+		font-size: 16px;
+		margin-bottom: 0;
+	}
+	h3{
+		font-size: 18px;
+	}
+	p {
+		font-size: 14px;
+	}
+	.image-size{
+		max-width: 75%;
+	}
+	.list-item {
+		max-width: 600px;
+	    width: 100%;
+	    margin: 0 auto;
+	    overflow: auto;
+	    max-height: 100%;
+	    text-align: center;
+	    position: relative;
+    	top: 30px;
+	}
+}
+
+/*desktop styles goes here*/
+@media only screen and (min-width: 900px) {
+	body{
+	    padding-left: 68px;
+	    padding-right: 83px;
+	}
+	.list-item {
+		max-width: 600px;
+	    width: 100%;
+	    margin: 0 auto;
+	    overflow: auto;
+	    margin-top: 50px;
+	    text-align: center;
+	}
+	.description {
+	    width: 50%;
+	    float: left;
+	}
+	.mainImage{
+	    width: 50%;
+	    float: right;
+	    padding-left: 17px;
+	    box-sizing: border-box;
+
+	}
+	.image-size{
+		max-width: 100%;
+	}
+	.frame {
+		width: 600px;
+	}
+	.frame ul li {
+		width: 600px;
+		list-style: none;
+	}
+	.content-div{
+		padding-left: 6%;
+		padding-right: 6%;
+	}
+	h1{
+		font-size: 36px;
+	}
+	h2 {
+		font-size: 24px;
+		margin-bottom: 0;
+	}
+	h3{
+		font-size: 30px;
+	}
+	p {
+		font-size: 18px;
+	}
+
 }
