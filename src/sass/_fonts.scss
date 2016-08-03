@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'yamin';
+  src:
+    url('fonts/yamin.ttf?qkauxw') format('truetype'),
+    url('fonts/yamin.woff?qkauxw') format('woff'),
+    url('fonts/yamin.svg?qkauxw#yamin') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="yamcon-"], [class*=" yamcon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'yamin' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.yamcon-add:before {
+  content: "\e145";
+}
+.yamcon-cached:before {
+  content: "\e86a";
+}
+.yamcon-markunread:before {
+  content: "\e159";
+}
+.yamcon-people:before {
+  content: "\e7fb";
+}
+.yamcon-home:before {
+  content: "\e88a";
+}
+.yamcon-info:before {
+  content: "\e88e";
+}
+.yamcon-notifications:before {
+  content: "\e7f4";
+}
+.yamcon-reply:before {
+  content: "\e15e";
+}
+.yamcon-search:before {
+  content: "\e8b6";
+}
+.yamcon-settings:before {
+  content: "\e8b8";
+}
+.yamcon-share:before {
+  content: "\e80d";
+}
+.yamcon-thumb_down:before {
+  content: "\e8db";
+}
+.yamcon-thumb_up:before {
+  content: "\e8dc";
+}
+.yamcon-view_headline:before {
+  content: "\e8ee";
+}
+.yamcon-wc:before {
+  content: "\e63d";
+}
+.yamcon-wifi:before {
+  content: "\e63e";
+}

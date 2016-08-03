@@ -1,0 +1,36 @@
+{
+  "name": "Yam'in",
+  "version": "2.0.0",
+  "description": "Chrome Plugin for Yammer",
+  "short_name": "Yam'in",
+  "icons": {
+    "128": "./img/plugin-logo-default.png"
+  },
+  "manifest_version":2,
+  "browser_action": {
+    "default_icon": "./img/plugin-logo-default.png",
+    "default_title": "Yam'in",
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.yammer.com/robots.txt*"],
+      "js": ["oauth2/oauth2_inject.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [
+    "https://www.yammer.com/oauth2/*",
+    "https://www.yammer.com/api/*",
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "web_accessible_resources" : [
+    "oauth2/oauth2.html","./img/plugin-logo-default.png"
+  ],
+  "background": {
+    "scripts": ["./vendor/jquery/dist/jquery.min.js", "background.js"]
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self'"
+}

@@ -1,0 +1,7 @@
+{
+  "buildPaths": {
+    "clean": ["build/fonts", "build/img", "build/oauth2", "build/*.js", "build/*.json", "build/*html", "build/*.css"],
+    "assetPath": "./plugin_assets/",
+    "buildLocation": "./build/"
+  }
+}

@@ -1,0 +1,153 @@
+@import "susy";
+@import "normalize/import-now";
+@import "./_fonts";
+
+$susy: (
+  columns: 6,
+  gutters: .25,
+  container: 360px,
+  global-box-sizing: border-box
+);
+@include border-box-sizing;
+
+body{
+  font-family: sans-serif;
+  font-size: 1.5em;
+  line-height: 1.7em;
+  min-width: 360.25px;
+  font-size: .9em;
+  line-height: 1.5em;
+  color: #333;
+  min-height: 520px;
+  background-color: #e3e3e3;
+  word-break: break-word;
+}
+
+a {
+  color: #386cbb;
+  text-decoration: none;
+  &:visited {
+    color: #386cbb;
+  }
+  &:hover {
+    cursor: pointer; 
+  }
+}
+
+img {
+  margin: 3px;
+  &.circle {
+    border-radius: 50%;
+  }
+}
+
+.row {
+  @include span(6);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+#header,#footer,#content { position:absolute; right:0;left:0}
+
+#header{
+  border: 0 0 1px 0 solid #eee;
+	height:55px; top:0;
+	background-color: #fff;
+  display: inline-flex;
+    
+  ul {
+    display: inline;
+    list-style: none;
+    &::before {
+      display: table;
+      content: " ";
+    }
+    &::after {
+      clear: both;
+    }
+    li {
+      margin: 10px;
+      float: left;
+      position: relative;
+      display: block;
+      top: -6px;
+      a {
+        color: #2196F3;
+        &:visited {
+          color: #2196F3;
+        }
+        &.active {
+          color: #386cbb;
+        }
+      }
+    }
+  }
+}
+#content{
+  top:55px;
+  bottom:27px;
+  height: 433px;
+  overflow: auto;
+  @include container;
+  /*overflow: hidden;  use this if don't want any window scrollbars and use an inner element for scrolling*/
+
+  /* http://codepen.io/MathieuRichard/pen/HAgnm */
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ddd;
+    border-radius: 20px;
+  }
+
+  .msg {
+    margin: 5px 0 5px 5px;
+    border: 1px solid #dadada;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    .row {
+      padding: 6px;
+      background-color: #fff;
+      .header {
+        .sender {
+          .pic {
+            @include span(1);
+          }
+          .name {
+            @include span(4);
+            color: #386cbb;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+}
+
+#footer{
+	height:27px; top: 493px;
+  border: 1px 0 0 0 solid #eee;
+	background-color: #fff;
+  a {
+    width: 14.2%;
+    float: left;
+    color: #5e5e5e;
+    text-align: center;
+    &.active {
+      color: #386cbb;
+    }
+    span {
+      font-size: 2em;
+      font-weight: 700;
+    }
+  }
+}
+
+

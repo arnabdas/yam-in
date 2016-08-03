@@ -1,0 +1,29 @@
+{
+  "name": "yam-in-v2",
+  "description": "Yammer plugin for Chrome",
+  "main": "./dist/index.html",
+  "authors": [
+    "Arnab Das <arnab@coderuse.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Chrome",
+    "Pramati",
+    "Yammer",
+    "Yam'in"
+  ],
+  "homepage": "https://imaginea.github.io/coderuse/yam-in",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "react": "^15.2.1",
+    "flux": "^2.1.1"
+  }
+}

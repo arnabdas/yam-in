@@ -1,0 +1,49 @@
+{
+  "name": "yam-in-v2",
+  "version": "2.0.0",
+  "description": "Yammer plugin for Chrome",
+  "main": "./dist/bundle.js",
+  "scripts": {
+    "postinstall": "typings install --global && bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Imaginea/yam-in.git"
+  },
+  "keywords": [
+    "Chrome",
+    "Pramati",
+    "Yammer",
+    "Yam'in"
+  ],
+  "author": "Imaginea, Pramati Technologies",
+  "contributors": [
+    {
+      "name": "Arnab Das",
+      "email": "arnab.das@imaginea.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Imaginea/yam-in/issues"
+  },
+  "homepage": "https://imaginea.github.io/coderuse/yam-in",
+  "dependencies": {
+    "flux": "2.1.1",
+    "react": "15.2.1",
+    "react-dom": "15.2.1"
+  },
+  "devDependencies": {
+    "config": "1.21.0",
+    "grunt": "1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-sass": "1.0.0",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-webpack": "1.0.11",
+    "source-map-loader": "0.1.5",
+    "ts-loader": "0.8.2",
+    "webpack": "1.13.1",
+    "webpack-dev-server": "1.14.1"
+  }
+}
