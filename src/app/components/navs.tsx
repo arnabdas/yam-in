@@ -1,7 +1,11 @@
 /// <reference path="../../../typings/index.d.ts" />
 
+import { Dispatcher } from 'flux';
+
 import * as React from 'react';
+
 import { Utils } from '../helpers';
+import { AppEvent } from '../events/appEvent';
 
 export interface INav {
   id: string,
@@ -10,7 +14,7 @@ export interface INav {
 }
 
 export interface INavProps {
-
+  dispatcher: Dispatcher<AppEvent>
 }
 export interface INavState {
   navs: Array<INav>
@@ -25,8 +29,10 @@ export class NavPills extends React.Component<INavProps, INavState> {
     };
   }
 
-  // https://discuss.reactjs.org/t/is-this-a-decent-pattern-to-update-parent-state-from-children/560
   handleClick(id: string) {
+    this.props.dispatcher.dispatch({
+      type: id
+    });
     this.makeActive(id);
     return false;
   }
@@ -39,7 +45,6 @@ export class NavPills extends React.Component<INavProps, INavState> {
 
   makeActive(id: string) {
     $('#header li').removeClass('active');
-    console.log($('#header li[data-nav="' + id + '"]'));
     $('#header li[data-nav="' + id + '"]').addClass('active');
   }
 

@@ -3,7 +3,7 @@
 import * as Flux from 'flux';
 import * as FBEmitter from 'fbemitter';
 
-import { AppEvent } from '../dispatchers/appDispatcher';
+import { AppEvent } from '../events/appEvent';
 
 const CHANGE_EVENT = 'change';
 

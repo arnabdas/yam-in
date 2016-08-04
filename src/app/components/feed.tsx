@@ -69,11 +69,11 @@ export class Feed extends React.Component<IFeedProp, IFeedState> {
   currentStateId: string;
   constructor(props: IFeedProp) {
     super(props);
-    this._setStateFromStores();
+    this.state = FeedStore.getState();
   }
 
   componentDidMount() {
-    this._listenerToken = FeedStore.addChangeListener(this._setStateFromStores);
+    this._listenerToken = FeedStore.addChangeListener(this._setStateFromStores.bind(this));
   }
 
   componentWillUnmount() {
@@ -94,6 +94,6 @@ export class Feed extends React.Component<IFeedProp, IFeedState> {
   }
 
   _setStateFromStores() {
-    this.state = FeedStore.getState();
+    this.setState(FeedStore.getState());
   }
 }

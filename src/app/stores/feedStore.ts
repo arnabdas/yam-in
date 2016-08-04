@@ -1,11 +1,13 @@
 /// <reference path="../../../typings/index.d.ts" />
 
+import { Dispatcher } from 'flux';
+
 import { BaseStore } from './baseStore';
 import { Server } from '../api/baseDAO';
 import { Message } from '../models/yammer';
 import { IFeedState } from '../interfaces/feed';
 import { FeedActionTypes } from '../actions/types';
-import { AppDispatcher, AppEvent } from '../dispatchers/appDispatcher';
+import { AppEvent } from '../events/appEvent';
 
 class FeedStore extends BaseStore<IFeedState>{
   callback: () => void;
@@ -31,5 +33,8 @@ class FeedStore extends BaseStore<IFeedState>{
   }
 }
 
-const feedStoreInstance = new FeedStore(AppDispatcher);
-export default feedStoreInstance;
+export const FeedDispatcher: Dispatcher<AppEvent> = new Dispatcher<AppEvent>();
+
+const FeedStoreInstance = new FeedStore(FeedDispatcher)
+
+export default FeedStoreInstance;

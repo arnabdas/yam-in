@@ -1,17 +1,18 @@
 /// <reference path="../../../typings/index.d.ts" />
 
+import { Dispatcher } from 'flux';
+
 import { BaseStore } from './baseStore';
 import { Server } from '../api/baseDAO';
 import { User } from '../models/yammer';
-import { IFeedState } from '../interfaces/feed';
-import { FeedActionTypes } from '../actions/types';
-import { AppDispatcher, AppEvent } from '../dispatchers/appDispatcher';
+import { AppEvent } from '../events/appEvent';
+import { ProfileActionTypes } from '../actions/types';
 
 class ProfileStore extends BaseStore<User>{
   callback: () => void;
   constructor(dispatcher: Flux.Dispatcher<AppEvent>) {
     super(dispatcher, (event: AppEvent) => {
-      Server.call('currentUser', {}).done(function (data: any) {
+      Server.call(ProfileActionTypes.REFRESH, {}).done(function (data: any) {
         this._state = User.Box(data);
         this._changeToken = 'change';
         this.emitChange();
@@ -22,5 +23,7 @@ class ProfileStore extends BaseStore<User>{
   }
 }
 
-const profileStoreInstance = new ProfileStore(AppDispatcher);
-export default profileStoreInstance;
+export const ProfileDispatcher: Flux.Dispatcher<AppEvent> = new Dispatcher<AppEvent>();
+
+const ProfileStoreInstance = new ProfileStore(ProfileDispatcher);
+export default ProfileStoreInstance;

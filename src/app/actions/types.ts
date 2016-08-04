@@ -3,3 +3,7 @@ export const FeedActionTypes = {
   TOP_FEED: 'topFeed',
   FOLLOWING_FEED: 'followingFeed',
 };
+
+export const ProfileActionTypes = {
+  REFRESH: 'currentUser'
+};

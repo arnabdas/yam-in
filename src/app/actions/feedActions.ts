@@ -1,22 +1,22 @@
 /// <reference path="../../../typings/index.d.ts" />
 
-import { AppDispatcher } from '../dispatchers/appDispatcher';
+import {FeedDispatcher} from '../stores/feedStore';
 import { FeedActionTypes } from './types';
 
 export function refreshAllFeed() {
-  AppDispatcher.dispatch({
+  FeedDispatcher.dispatch({
     type: FeedActionTypes.ALL_FEED
   });
 }
 
 export function refreshTopFeed() {
-  AppDispatcher.dispatch({
+  FeedDispatcher.dispatch({
     type: FeedActionTypes.TOP_FEED
   });
 }
 
 export function refreshFollowingFeed() {
-  AppDispatcher.dispatch({
+  FeedDispatcher.dispatch({
     type: FeedActionTypes.FOLLOWING_FEED
   });
 }

@@ -4,15 +4,28 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { User } from '../models/yammer';
+import { feedNavs } from '../constants';
 import { IYamAppState } from '../interfaces/app';
+import ProfileStore from '../stores/profileStore';
+import {FeedDispatcher} from '../stores/feedStore';
 import * as FeedActions from '../actions/feedActions';
+import * as ProfileActions from '../actions/profileActions';
 
 import { Feed } from './feed';
 import { NavPills } from './navs';
 
 export class YamApp extends React.Component<{}, IYamAppState> {
+  constructor() {
+    super();
+    this.state = {
+      currentUser: ProfileStore.getState()
+    };
+  }
 
   componentDidMount() {
+    (this.refs['headerPills'] as NavPills).changeNavs(feedNavs);
+    ProfileStore.addChangeListener(this._setStateFromStores.bind(this));
+    ProfileActions.refreshProfile();
     FeedActions.refreshAllFeed();
   }
 
@@ -22,7 +35,7 @@ export class YamApp extends React.Component<{}, IYamAppState> {
         <div id="header">
           <img className="circle" src={this.state.currentUser.mugshot_url} />
 
-          <NavPills />
+          <NavPills ref="headerPills" dispatcher={FeedDispatcher} />
         </div>
         <div id="content">
           <Feed />
@@ -52,5 +65,11 @@ export class YamApp extends React.Component<{}, IYamAppState> {
         </div>
       </div>
     );
+  }
+
+  _setStateFromStores() {
+    this.setState({
+      currentUser: ProfileStore.getState()
+    });
   }
 }
