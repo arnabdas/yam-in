@@ -10,5 +10,5 @@ let accessToken = Utils.get('newAccessToken');
 
 ReactDOM.render(
     <YamApp />,
-  document.getElementById("yamIn")
+  document.getElementById("yam-in")
 );

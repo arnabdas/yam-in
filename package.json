@@ -29,7 +29,9 @@
   },
   "homepage": "https://imaginea.github.io/coderuse/yam-in",
   "dependencies": {
+    "fbemitter": "^2.0.2",
     "flux": "2.1.1",
+    "immutable": "^3.8.1",
     "react": "15.2.1",
     "react-dom": "15.2.1"
   },
