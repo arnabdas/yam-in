@@ -32,7 +32,7 @@ git clone https://github.com/Imaginea/yam-in.git && cd yam-in
 git checkout -b v2 origin/v2
 
 # Install globally
-npm install -g typescript typings webpack grunt-cli
+npm install -g typescript typings webpack grunt-cli bower
 
 # Install project dependencies
 npm install
@@ -41,7 +41,7 @@ npm install
 npm link typescript
 
 # Install Ruby and
-gem install sass susy normalize-scss
+gem install sass susy normalize-scss bourbon
 
 # Run the default task defined in Gruntfile
 grunt 

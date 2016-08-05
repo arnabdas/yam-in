@@ -20,6 +20,10 @@ export const endPoints: EndPointMap = {
     method: 'GET',
     url: 'https://www.yammer.com/api/v1/users/current.json?include_group_memberships=true'
   },
+  receivedMessages: {
+    method: 'GET',
+    url: 'https://www.yammer.com/api/v1/messages/received.json'
+  },
   allFeed: {
     method: 'GET',
     url: 'https://www.yammer.com/api/v1/messages.json'

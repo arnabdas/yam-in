@@ -2,17 +2,12 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { IndexLink, Link } from 'react-router';
 
 import { User } from '../models/yammer';
-import { feedNavs } from '../constants';
 import { IYamAppState } from '../interfaces/app';
 import ProfileStore from '../stores/profileStore';
-import {FeedDispatcher} from '../stores/feedStore';
-import * as FeedActions from '../actions/feedActions';
 import * as ProfileActions from '../actions/profileActions';
-
-import { Feed } from './feed';
-import { NavPills } from './navs';
 
 export class YamApp extends React.Component<{}, IYamAppState> {
   constructor() {
@@ -23,45 +18,43 @@ export class YamApp extends React.Component<{}, IYamAppState> {
   }
 
   componentDidMount() {
-    (this.refs['headerPills'] as NavPills).changeNavs(feedNavs);
     ProfileStore.addChangeListener(this._setStateFromStores.bind(this));
     ProfileActions.refreshProfile();
-    FeedActions.refreshAllFeed();
   }
 
-  render () {
+  render() {
     return (
-      <div>
-        <div id="header">
-          <img className="circle" src={this.state.currentUser.mugshot_url} />
-
-          <NavPills ref="headerPills" dispatcher={FeedDispatcher} />
-        </div>
-        <div id="content">
-          <Feed />
+      <div className="row">
+        <img className="circle profile" src={this.state.currentUser.mugshot_url} />
+        <div className="row">
+          {this.props.children}
         </div>
         <div id="footer">
-          <a href="javascript:void();" className="active">
+          <IndexLink to="/" activeClassName="active">
             <span className="yamcon-home" />
-          </a>
-          <a href="javascript:void();">
-            <span className="yamcon-markunread" />
-          </a>
-          <a href="javascript:void();">
-            <span className="yamcon-notifications" />
-          </a>
-          <a href="javascript:void();">
-            <span className="yamcon-people" />
-          </a>
-          <a href="javascript:void();">
+          </IndexLink>
+          <Link to="/messages" activeClassName="active">
+            <span className="yamcon-markunread">
+              <span className="unread-count">15</span>
+            </span>
+          </Link>
+          <Link to="/notifications" activeClassName="active">
+            <span className="yamcon-notifications">
+              <span className="unread-count">2</span>
+            </span>
+          </Link>
+          <Link to="/people" activeClassName="active">
             <span className="yamcon-wc" />
-          </a>
-          <a href="javascript:void();">
+          </Link>
+          <Link to="/groups" activeClassName="active">
+            <span className="yamcon-people" />
+          </Link>
+          <Link to="/activities" activeClassName="active">
             <span className="yamcon-view_headline" />
-          </a>
-          <a href="javascript:void();">
+          </Link>
+          <Link to="/about"activeClassName="active">
             <span className="yamcon-info" />
-          </a>
+          </Link>
         </div>
       </div>
     );

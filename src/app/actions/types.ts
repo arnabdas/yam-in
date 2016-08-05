@@ -7,3 +7,7 @@ export const FeedActionTypes = {
 export const ProfileActionTypes = {
   REFRESH: 'currentUser'
 };
+
+export const ReceivedMessageActionaTypes = {
+  GET_MESSAGE: 'receivedMessages'
+};

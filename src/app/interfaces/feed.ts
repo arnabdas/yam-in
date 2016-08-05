@@ -1,3 +1,8 @@
+/// <reference path="../../../typings/index.d.ts" />
+
+import { Dispatcher } from 'flux';
+
+import { BaseStore } from '../stores/baseStore';
 import { Message } from '../models/yammer';
 
 export interface IFeedItemProp {
@@ -6,7 +11,7 @@ export interface IFeedItemProp {
 }
 
 export interface IFeedProp {
-
+  store: BaseStore<IFeedState>
 }
 
 export interface IFeedState {

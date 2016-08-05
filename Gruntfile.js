@@ -82,7 +82,7 @@ module.exports = function (grunt) {
     watch: {
       styles: {
         files: [
-          'sass/**/*.scss'
+          'src/sass/**/*.scss'
         ],
         tasks: ['sass:dev']
       },

@@ -49,7 +49,6 @@ export class NavPills extends React.Component<INavProps, INavState> {
   }
 
   componentDidMount() {
-    console.log($('#header li:first'));
     $('#header li:first').addClass('active');
   }
 

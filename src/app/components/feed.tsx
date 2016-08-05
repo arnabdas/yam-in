@@ -3,7 +3,7 @@
 import * as React from "react";
 import {Utils} from "../helpers";
 
-import FeedStore from '../stores/feedStore';
+import {BaseStore} from '../stores/baseStore';
 import {Message, User, Group} from '../models/yammer';
 import { IFeedItemProp, IFeedProp, IFeedState } from '../interfaces/feed';
 
@@ -65,19 +65,21 @@ export class FeedItem extends React.Component<IFeedItemProp, Message> {
 }
 
 export class Feed extends React.Component<IFeedProp, IFeedState> {
+  _store: BaseStore<IFeedState>;
   _listenerToken: FBEmitter.EventSubscription;
   currentStateId: string;
   constructor(props: IFeedProp) {
     super(props);
-    this.state = FeedStore.getState();
+    this._store = this.props.store;
+    this.state = this._store.getState();
   }
 
   componentDidMount() {
-    this._listenerToken = FeedStore.addChangeListener(this._setStateFromStores.bind(this));
+    this._listenerToken = this._store.addChangeListener(this._setStateFromStores.bind(this));
   }
 
   componentWillUnmount() {
-    FeedStore.removeChangeListener(this._listenerToken);
+    this._store.removeChangeListener(this._listenerToken);
   }
 
   render() {
@@ -94,6 +96,6 @@ export class Feed extends React.Component<IFeedProp, IFeedState> {
   }
 
   _setStateFromStores() {
-    this.setState(FeedStore.getState());
+    this.setState(this._store.getState());
   }
 }
