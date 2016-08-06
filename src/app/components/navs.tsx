@@ -30,9 +30,7 @@ export class NavPills extends React.Component<INavProps, INavState> {
   }
 
   handleClick(id: string) {
-    this.props.dispatcher.dispatch({
-      type: id
-    });
+    this.props.dispatcher.dispatch(new AppEvent(id));
     this.makeActive(id);
     return false;
   }

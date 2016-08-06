@@ -11,3 +11,7 @@ export const ProfileActionTypes = {
 export const ReceivedMessageActionaTypes = {
   GET_MESSAGE: 'receivedMessages'
 };
+
+export const PeopleActionTypes = {
+  GET_PEOPLE: 'people'
+};

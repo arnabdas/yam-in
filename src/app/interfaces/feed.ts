@@ -1,7 +1,3 @@
-/// <reference path="../../../typings/index.d.ts" />
-
-import { Dispatcher } from 'flux';
-
 import { BaseStore } from '../stores/baseStore';
 import { Message } from '../models/yammer';
 
