@@ -10,10 +10,13 @@ import { Messages } from './views/messages';
 import { Notifications } from './views/notifications';
 import { People } from './views/people';
 import { Groups } from './views/groups';
+import { GroupFeeds } from './views/groupFeed';
 import { Activities } from './views/activities';
 import { About } from './views/about';
 
 import { UserProfile } from './components/users';
+
+//// TODO: Nested route required for groups
 
 ReactDOM.render(
   (
@@ -23,7 +26,10 @@ ReactDOM.render(
         <Route path="/messages" component={Messages}/>
         <Route path="/notifications" component={Notifications}/>
         <Route path="/people" component={People}/>
+
         <Route path="/groups" component={Groups}/>
+        <Route path="/groups/feed" component={GroupFeeds}/>
+        
         <Route path="/activities" component={Activities}/>
         <Route path="/about" component={About}/>
         <Route path="/profile" component={UserProfile}/>

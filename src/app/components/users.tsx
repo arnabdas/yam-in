@@ -3,8 +3,6 @@
 import * as React from "react";
 import { Link } from 'react-router';
 
-import {Utils} from "../helpers";
-
 import {
   IUserListItemProps,
   IPeopleState,
@@ -18,6 +16,59 @@ import ProfileStore from '../stores/profileStore';
 
 import * as PeopleActions from '../actions/peopleActions';
 import * as ProfileActions from '../actions/profileActions';
+
+export class UserListItem extends React.Component<IUserListItemProps, User>{
+  constructor(props: IUserListItemProps) {
+    super(props);
+
+    this.state = this.props.user;
+  }
+
+  render() {
+    return (
+      <div className="item">
+        <img className="" src={this.state.mugshot_url} />
+        <span className="">{this.state.full_name}</span>
+      </div>
+    );
+  }
+}
+
+export class UserList extends React.Component<{}, IPeopleState>{
+  _listenerToken: FBEmitter.EventSubscription;
+  constructor(props: any) {
+    super(props);
+
+    PeopleActions.getPeople({ letter: 'A', page: 1 });
+
+    this.state = PeopleStore.getState();
+  }
+
+  componentDidMount() {
+    this._listenerToken = PeopleStore.addChangeListener(PeopleActionTypes.GET_PEOPLE, this._setStateFromStores.bind(this));
+  }
+
+  componentWillUnmount() {
+    PeopleStore.removeChangeListener(this._listenerToken);
+  }
+
+  _setStateFromStores() {
+    this.setState(PeopleStore.getState());
+  }
+
+  render() {
+    return (
+      <div className="list">
+        {this.state.people.map(function (u) {
+          return (
+            <Link key={u.id} to= {{ pathname: '/profile', state: { userId: u.id } }}>
+              <UserListItem user={u} />
+            </Link>);
+        }) }
+      </div>
+    );
+  }
+}
 
 export class UserProfile extends React.Component<IUserProfileProps, User>{
   _listenerToken: FBEmitter.EventSubscription;
@@ -85,59 +136,5 @@ export class UserProfile extends React.Component<IUserProfileProps, User>{
         </div>
       </div>
     );
-  }
-}
-
-export class UserListItem extends React.Component<IUserListItemProps, User>{
-  constructor(props: IUserListItemProps) {
-    super(props);
-
-    this.state = this.props.user;
-  }
-
-  render() {
-    return (
-      <div className="user list item">
-
-        <img className="" src={this.state.mugshot_url} />
-        <span className="">{this.state.full_name}</span>
-      </div>
-    );
-  }
-}
-
-export class UserList extends React.Component<{}, IPeopleState>{
-  _listenerToken: FBEmitter.EventSubscription;
-  constructor(props: any) {
-    super(props);
-
-    PeopleActions.getPeople({ letter: 'A', page: 1 });
-
-    this.state = PeopleStore.getState();
-  }
-
-  componentDidMount() {
-    this._listenerToken = PeopleStore.addChangeListener(PeopleActionTypes.GET_PEOPLE, this._setStateFromStores.bind(this));
-  }
-
-  componentWillUnmount() {
-    PeopleStore.removeChangeListener(this._listenerToken);
-  }
-
-  render() {
-    return (
-      <div className="user list">
-        {this.state.people.map(function (u) {
-          return (
-            <Link key={u.id} to= {{ pathname: '/profile', state: { userId: u.id } }}>
-              <UserListItem user={u} />
-            </Link>);
-        }) }
-      </div>
-    );
-  }
-
-  _setStateFromStores() {
-    this.setState(PeopleStore.getState());
   }
 }

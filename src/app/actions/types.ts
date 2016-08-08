@@ -2,6 +2,7 @@ export const FeedActionTypes = {
   ALL_FEED: 'allFeed',
   TOP_FEED: 'topFeed',
   FOLLOWING_FEED: 'followingFeed',
+  GROUP_FEED: 'groupFeedById'
 };
 
 export const ProfileActionTypes = {
@@ -16,3 +17,7 @@ export const ReceivedMessageActionaTypes = {
 export const PeopleActionTypes = {
   GET_PEOPLE: 'people'
 };
+
+export const GroupActionTypes = {
+  GET_GROUPS: 'currentUser'
+}

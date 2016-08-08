@@ -6,7 +6,6 @@ import { BaseStore } from './baseStore';
 import { Server } from '../api/baseDAO';
 import { Message } from '../models/yammer';
 import { IFeedState } from '../interfaces/feed';
-import { FeedActionTypes } from '../actions/types';
 import { AppEvent } from '../events/appEvent';
 
 class FeedStore extends BaseStore<IFeedState>{

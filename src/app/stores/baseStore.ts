@@ -41,7 +41,7 @@ export class BaseStore<TState> {
     return this._state;
   }
 
-  _cleanState() {
+  cleanState() {
     this._state = this._cleanStateFn();
   }
 

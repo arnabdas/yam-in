@@ -15,3 +15,7 @@ export function refreshTopFeed() {
 export function refreshFollowingFeed() {
   FeedDispatcher.dispatch(new AppEvent(FeedActionTypes.FOLLOWING_FEED));
 }
+
+export function refreshGroupFeedById(groupIdObj: any) {
+  FeedDispatcher.dispatch(new AppEvent(FeedActionTypes.FOLLOWING_FEED, groupIdObj));
+}
