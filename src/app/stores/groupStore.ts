@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 
-import AppDispatcher from '../dispatchers/appDispatcher';
+import { Dispatcher } from 'flux';
 
 import { BaseStore } from './baseStore';
 import { Server } from '../api/baseDAO';
@@ -30,6 +30,8 @@ class GroupStore extends BaseStore<IGroupListState>{
   }
 }
 
-const FeedStoreInstance = new GroupStore(AppDispatcher);
+export const GroupDispatcher: Dispatcher<AppEvent> = new Dispatcher<AppEvent>();
 
-export default FeedStoreInstance;
+const GroupStoreInstance = new GroupStore(GroupDispatcher);
+
+export default GroupStoreInstance;

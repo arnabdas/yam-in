@@ -116,4 +116,47 @@ export class Utils {
     return retValue;
   }
 
+  public static formatReferences(refs: Array<any>): { [key: string]: {[id: string]: any} } {
+    let formatted: { [key: string]: {[id: string]: any} } = {};
+
+    for (var i = 0; i < refs.length; i++) {
+      var ref = refs[i];
+      var type = ref.type;
+      if (typeof formatted[type] === 'undefined') {
+        formatted[type] = {};
+      }
+      formatted[type][ref.id] = ref;
+    }
+
+    return formatted;
+  }
+
+  public static formatMessage(msg: string, refs: { [key: string]: {[id: string]: any} }): {msg: string, relatedObj: any} {
+    if (typeof msg !== 'string') {
+      return {msg: '', relatedObj: {}};
+    }
+    let regexp = /(\[\[[a-z_]+:[0-9]+\]\])/g;
+    let match: Array<any>, matches = [], relatedObj: any;
+    while (match = regexp.exec(msg)) {
+      var matched = match[0];
+      var indexOfDivider = matched.indexOf(':');
+      var type = matched.substring(2, indexOfDivider);
+      var id = matched.substring(indexOfDivider + 1, matched.length - 2);
+      var toPush = {};
+      if (type === 'user') {
+        relatedObj = refs[type][id];
+      }
+      toPush[matched] = refs[type][id];
+      matches.push(toPush);
+    }   
+    for (var i in matches) {
+      if (matches.hasOwnProperty(i)) {
+        msg = msg.replace(i, matches[i].full_name);
+      }
+    }
+    console.log(msg);    
+
+    return {msg: msg, relatedObj: relatedObj};
+  }
+
 }

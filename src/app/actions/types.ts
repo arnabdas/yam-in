@@ -20,4 +20,8 @@ export const PeopleActionTypes = {
 
 export const GroupActionTypes = {
   GET_GROUPS: 'currentUser'
-}
+};
+
+export const ActivityActionTypes = {
+  GET_ACTIVITIES: 'activities'
+};

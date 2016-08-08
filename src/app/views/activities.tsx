@@ -3,23 +3,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-// import MessageStore from '../stores/messageStore';
-// import * as MessageActions from '../actions/messageActions';
-
-// import { Feed } from '../components/feed';
+import { ActivityList } from '../components/activities';
 
 export class Activities extends React.Component<{}, {}> {
-  componentDidMount() {
-    //MessageActions.refreshProfile();
-  }
-
   render() {
     return (
       <div className="row">
         <div id="header">
         </div>
         <div id="content">
-          <h1>Activities!!!</h1>
+          <ActivityList />
         </div>
       </div>
     );

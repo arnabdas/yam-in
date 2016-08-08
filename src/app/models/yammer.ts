@@ -120,6 +120,31 @@ export class Group extends Reference {
   }
 }
 
+// [[user:1588562818]] has joined [[group:1532669]]
+// [[user:1497198668]] uploaded [[uploaded_file:64426381]]
+
+export class Activity {
+  constructor(
+    public category = '',
+    public created_at = '',
+    public message = '',
+    public user = new User()
+  ) { }
+
+  static Box(obj: any, references?: { [key: string]: {[id: string]: any} }): Activity {
+    if (typeof obj !== 'undefined' && ('id' in obj)) {
+      let msg: string, user: User;
+      if (references) {
+        var a = Utils.formatMessage(obj.message, references);
+        msg = a.msg;
+        user = User.Box(a.relatedObj);
+      }
+      return new Activity(obj.category, obj.created_at, msg, user);
+    }
+    return new Activity();
+  }
+}
+
 export class Image {
   constructor(
     size = 0,
