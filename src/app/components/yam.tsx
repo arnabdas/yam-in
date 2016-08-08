@@ -7,6 +7,7 @@ import { IndexLink, Link } from 'react-router';
 import { User } from '../models/yammer';
 import { IYamAppState } from '../interfaces/app';
 import ProfileStore from '../stores/profileStore';
+import { ProfileActionTypes } from '../actions/types';
 import * as ProfileActions from '../actions/profileActions';
 
 export class YamApp extends React.Component<{}, IYamAppState> {
@@ -18,8 +19,14 @@ export class YamApp extends React.Component<{}, IYamAppState> {
   }
 
   componentDidMount() {
-    ProfileStore.addChangeListener(this._setStateFromStores.bind(this));
-    ProfileActions.refreshProfile();
+    ProfileStore.addChangeListener(ProfileActionTypes.GET_CURRENT_USER, this._setStateFromStores.bind(this));
+    ProfileActions.getCurrentUserProfile();
+  }
+
+  _setStateFromStores() {
+    this.setState({
+      currentUser: ProfileStore.getState()
+    });
   }
 
   render() {
@@ -58,11 +65,5 @@ export class YamApp extends React.Component<{}, IYamAppState> {
         </div>
       </div>
     );
-  }
-
-  _setStateFromStores() {
-    this.setState({
-      currentUser: ProfileStore.getState()
-    });
   }
 }

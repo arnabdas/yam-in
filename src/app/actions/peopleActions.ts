@@ -1,9 +1,10 @@
 /// <reference path="../../../typings/index.d.ts" />
 
-import { AppEvent } from '../events/appEvent';
 import { PeopleActionTypes } from './types';
-import {PeopleDispatcher} from '../stores/peopleStore';
+import { AppEvent } from '../events/appEvent';
+import { PeopleDispatcher } from '../stores/peopleStore';
+import { IPeopleActionPayload } from '../interfaces/people';
 
-export function getPeople() {
-  PeopleDispatcher.dispatch(new AppEvent(PeopleActionTypes.GET_PEOPLE));
+export function getPeople(payload: IPeopleActionPayload) {
+  PeopleDispatcher.dispatch(new AppEvent(PeopleActionTypes.GET_PEOPLE, payload));
 }

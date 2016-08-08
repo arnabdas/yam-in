@@ -5,8 +5,6 @@ import * as FBEmitter from 'fbemitter';
 
 import { AppEvent } from '../events/appEvent';
 
-const CHANGE_EVENT = 'change';
-
 export class BaseStore<TState> {
   _changeToken: string;
   _emitter: FBEmitter.EventEmitter;
@@ -31,8 +29,8 @@ export class BaseStore<TState> {
     this._emitter.emit(this._changeToken);
   }
 
-  addChangeListener(callback: () => void): FBEmitter.EventSubscription {
-    return this._emitter.addListener(CHANGE_EVENT, callback);
+  addChangeListener(changeEvent: string, callback: () => void): FBEmitter.EventSubscription {
+    return this._emitter.addListener(changeEvent, callback);
   }
 
   removeChangeListener(evtSubs: FBEmitter.EventSubscription) {

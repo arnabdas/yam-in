@@ -17,7 +17,7 @@ class PeopleStore extends BaseStore<IPeopleState>{
         this._state = {
           people: data.map((user: any) => { return User.Box(user); })
         };
-        this._changeToken = 'change';
+        this._changeToken = event.type;
         this.emitChange();
       }.bind(this));
     }, () => {

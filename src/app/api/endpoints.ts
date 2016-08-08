@@ -14,11 +14,15 @@ export const endPoints: EndPointMap = {
   },
   userProfile: {
     method: 'GET',
-    url: 'https://www.yammer.com/api/v1/users/{%userId%}'
+    url: 'https://www.yammer.com/api/v1/users/{%userId%}.json'
   },
   groupList: {
     method: 'GET',
     url: 'https://www.yammer.com/api/v1/users/current.json?include_group_memberships=true'
+  },
+  people: {
+    method: 'GET',
+    url: 'https://www.yammer.com/api/v1/users.json'
   },
   receivedMessages: {
     method: 'GET',
@@ -59,9 +63,5 @@ export const endPoints: EndPointMap = {
   search: {
     method: 'GET',
     url: 'https://www.yammer.com/api/v1/search.json'
-  },
-  people: {
-    method: 'GET',
-    url: 'https://www.yammer.com/api/v1/users.json'
   }
 };

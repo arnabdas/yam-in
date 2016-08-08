@@ -13,6 +13,8 @@ import { Groups } from './views/groups';
 import { Activities } from './views/activities';
 import { About } from './views/about';
 
+import { UserProfile } from './components/users';
+
 ReactDOM.render(
   (
     <Router history={hashHistory}>
@@ -24,6 +26,7 @@ ReactDOM.render(
         <Route path="/groups" component={Groups}/>
         <Route path="/activities" component={Activities}/>
         <Route path="/about" component={About}/>
+        <Route path="/profile" component={UserProfile}/>
       </Route>
     </Router>
   ),

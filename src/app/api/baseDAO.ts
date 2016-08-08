@@ -62,11 +62,11 @@ class BaseDAO {
     if (urlInputs) {
       for (var i in urlInputs) {
         if (urlInputs.hasOwnProperty(i)) {
-          let r = new RegExp('/\{%' + i + '%\}', 'g');
-          url.replace(r, urlInputs[i]);
+          let r = new RegExp('\{%' + i + '%\}', 'g');
+          url = url.replace(r, urlInputs[i]);
         }
       }
-    }
+    }    
 
     if (parameters) {
       for (var p in parameters) {

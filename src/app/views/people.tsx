@@ -3,15 +3,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-// import MessageStore from '../stores/messageStore';
-// import * as MessageActions from '../actions/messageActions';
-
-// import { Feed } from '../components/feed';
+import { UserList } from '../components/users';
 
 export class People extends React.Component<{}, {}> {
-  componentDidMount() {
-    //MessageActions.refreshProfile();
-  }
 
   render () {
     return (
@@ -19,7 +13,7 @@ export class People extends React.Component<{}, {}> {
         <div id="header">
         </div>
         <div id="content">
-          <h1>People!!!</h1>
+          <UserList />
         </div>
       </div>
     );

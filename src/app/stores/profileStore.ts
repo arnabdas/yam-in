@@ -12,9 +12,9 @@ class ProfileStore extends BaseStore<User>{
   callback: () => void;
   constructor(dispatcher: Flux.Dispatcher<AppEvent>) {
     super(dispatcher, (event: AppEvent) => {
-      Server.call(ProfileActionTypes.REFRESH, {}).done(function (data: any) {
+      Server.call(event.type, {}, {}, event.payLoad).done(function (data: any) {
         this._state = User.Box(data);
-        this._changeToken = 'change';
+        this._changeToken = event.type;
         this.emitChange();
       }.bind(this));
     }, () => {

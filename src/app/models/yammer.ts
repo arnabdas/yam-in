@@ -50,16 +50,22 @@ export class User extends Reference {
     public user_id = 0,
     public activated_at = '',
     public auto_activated = false,
+    public birth_date = '',
+    public department = '',
     public email = '',
     public full_name = '',
     public id = 0,
+    public interests = '',
     public job_title = '',
     public mugshot_url = 'https://mug0.assets-yammer.com/mugshot/images/48x48/no_photo.png',
     public mugshot_url_template = '',
     public name = '',
     public network_id = 0,
+    public location = '',
+    public phone_number = '',
     public state = '',
     public stats = new Stats(),
+    public summary = '',
     public type = '',
     public url = '',
     public web_url = ''
@@ -70,9 +76,9 @@ export class User extends Reference {
   static Box(obj: any): User {
     if (typeof obj !== 'undefined' && ('id' in obj)) {
       let stats = Stats.Box(obj.stats);
-      return new User(obj.permalink, obj.user_id, obj.activated_at, obj.auto_activated,
-        obj.email, obj.full_name, obj.id, obj.job_title, obj.mugshot_url, obj.mugshot_url_template,
-        obj.name, obj.network_id, obj.state, stats, obj.type, obj.url, obj.web_url);
+      return new User(obj.permalink, obj.user_id, obj.activated_at, obj.auto_activated, obj.birth_date, obj.department,
+        obj.email, obj.full_name, obj.id, obj.interests, obj.job_title, obj.mugshot_url, obj.mugshot_url_template,
+        obj.name, obj.network_id, obj.location, obj.phone_number, obj.state, stats, obj.summary, obj.type, obj.url, obj.web_url);
     }
     return new User();
   }
@@ -122,51 +128,6 @@ export class Image {
   ) { }
 }
 
-export class Upload {
-  constructor(
-    public content_class = '',
-    public content_type = '',
-    public created_at = '',
-    public description = '',
-    public download_url = '',
-    public full_name = '',
-    public group_id = 0,
-    public height = 0,
-    public id = 0,
-    public image = new Image(),
-    public large_icon_url = '',
-    public large_preview_url = '',
-    public last_uploaded_at = '',
-    public last_uploaded_by_id = 0,
-    public last_uploaded_by_type = '',
-    public latest_version_id = 0,
-    public name = '',
-    public network_id = 0,
-    public official = false,
-    public original_name = '',
-    public overlay_url = '',
-    public owner_id = 0,
-    public owner_type = '',
-    public path = '',
-    public preview_url = '',
-    public privacy = '',
-    public real_type = '',
-    public scaled_url = '',
-    public size = 0,
-    public small_icon_url = '',
-    public status = '',
-    public streaming_url = '',
-    public thumbnail_url = '',
-    public transcoded = '',
-    public type = '',
-    public url = '',
-    public uuid = '',
-    public web_url = '',
-    public width = 0,
-    public y_id = 0
-  ) { }
-}
-
 export class Attachment {
   constructor(
     public id = 0,
@@ -195,9 +156,10 @@ export class Liked_By {
   static Box(obj: any): Liked_By {
     if (typeof obj === 'Object' && obj !== null &&
       typeof obj.names === 'Array' && obj.names.length > 0) {
+
       let names = obj.names.map(function (name: any) {
-        return new User(name.permalink, name.user_id, '', false, '',
-          name.full_name, 0, '', '', '', '', name.network_id);
+        return new User(name.permalink, name.user_id, '', false, '', '', '',
+          name.full_name, 0, '', '', '', '', '', name.network_id);
       });
       return new Liked_By(obj.count, names);
     }

@@ -16,6 +16,8 @@ export class Home extends React.Component<{}, {}> {
     super();
   }
 
+  // http://stackoverflow.com/questions/36654475/react-router-how-to-get-the-previous-route-in-onenter-handler
+
   componentDidMount() {
     (this.refs['headerPills'] as NavPills).changeNavs(feedNavs);
     FeedActions.refreshAllFeed();

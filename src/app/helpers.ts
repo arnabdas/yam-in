@@ -99,11 +99,18 @@ export class Utils {
   public static tryParseNumber(str = '', radix = 10, defaultValue = 0): number {
     var retValue = defaultValue;
     if (str !== null) {
-      if (typeof str === 'String' && str.length > 0) {
-        retValue = parseInt(str, radix);
-        if (isNaN(retValue)) {
-          retValue = defaultValue;
+      if (typeof str === 'string' && str.length > 0) {
+        try {
+          retValue = parseInt(str, radix);
+        } catch (e) {
+          return defaultValue;
         }
+        if (isNaN(retValue)) {
+          return defaultValue;
+        }
+      }
+      else if (typeof str === 'number') {
+        return parseInt(str);
       }
     }
     return retValue;

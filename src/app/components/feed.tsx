@@ -75,7 +75,7 @@ export class Feed extends React.Component<IFeedProp, IFeedState> {
   }
 
   componentDidMount() {
-    this._listenerToken = this._store.addChangeListener(this._setStateFromStores.bind(this));
+    this._listenerToken = this._store.addChangeListener('change', this._setStateFromStores.bind(this));
   }
 
   componentWillUnmount() {

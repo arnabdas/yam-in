@@ -5,7 +5,8 @@ export const FeedActionTypes = {
 };
 
 export const ProfileActionTypes = {
-  REFRESH: 'currentUser'
+  GET_CURRENT_USER: 'currentUser',
+  GET_USER: 'userProfile'
 };
 
 export const ReceivedMessageActionaTypes = {
