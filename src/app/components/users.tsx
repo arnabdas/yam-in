@@ -27,8 +27,8 @@ export class UserListItem extends React.Component<IUserListItemProps, User>{
   render() {
     return (
       <div className="item">
-        <img className="" src={this.state.mugshot_url} />
-        <span className="">{this.state.full_name}</span>
+        <img className="cell" src={this.state.mugshot_url} />
+        <span className="cell single">{this.state.full_name}</span>
       </div>
     );
   }
@@ -58,7 +58,7 @@ export class UserList extends React.Component<{}, IPeopleState>{
 
   render() {
     return (
-      <div className="list">
+      <div className="card-list">
         {this.state.people.map(function (u) {
           return (
             <Link key={u.id} to= {{ pathname: '/profile', state: { userId: u.id } }}>
@@ -71,6 +71,7 @@ export class UserList extends React.Component<{}, IPeopleState>{
 }
 
 export class UserProfile extends React.Component<IUserProfileProps, User>{
+  _mugshotSizeRegexp = /\{[a-z]+\}/g;
   _listenerToken: FBEmitter.EventSubscription;
   constructor(props: any) {
     super(props);
@@ -93,48 +94,65 @@ export class UserProfile extends React.Component<IUserProfileProps, User>{
 
   _setStateFromStores() {
     this.setState(ProfileStore.getState());
-
   }
 
   render() {
     return (
-      <div className="user profile">
-        <img className="mugshot" src={this.state.mugshot_url} />
-        <span className="name">{this.state.full_name}</span>
-        <span className="title">{this.state.job_title}</span>
-        <ul className="rep">
-          <li className="followers">{this.state.stats.followers}</li>
-          <li className="following">{this.state.stats.following}</li>
-          <li className="updates">{this.state.stats.updates}</li>
-        </ul>
-        <p>
-          {this.state.summary}
-        </p>
-        <div className="row">
-          <div className="label">Department</div>
-          <div className="desc">{this.state.department}</div>
+      <div className="row">
+        <div id="header">
         </div>
-        <div className="row">
-          <div className="label">Location</div>
-          <div className="desc">{this.state.location}</div>
-        </div>
-        <div className="row">
-          <div className="label">Birthday</div>
-          <div className="desc">{this.state.birth_date}</div>
-        </div>
-        <div className="row">
-          <div className="label">Email</div>
-          <div className="desc">{this.state.email}</div>
-        </div>
-        <div className="row">
-          <div className="label">Phone</div>
-          <div className="desc">{this.state.phone_number}</div>
-        </div>
-        <div className="row">
-          <div className="label">Interests</div>
-          <div className="desc">{this.state.interests}</div>
+        <div id="content">
+          <div className="user profile">
+            <img className="mugshot" src={this.state.mugshot_url_template.replace(this._mugshotSizeRegexp, '100')} />
+            <span className="name">{this.state.full_name}</span>
+            <span className="title">{this.state.job_title}</span>
+            <ul className="rep">
+              <li className="followers">
+                <img src="./img/followers.png" />
+                <span>{this.state.stats.followers}</span>
+              </li>
+              <li className="following">
+                <img src="./img/following.png" />
+                <span>{this.state.stats.following}</span>
+              </li>
+              <li className="updates">
+                <img src="./img/updates.png" />
+                <span>{this.state.stats.updates}</span>
+              </li>
+            </ul>
+            <p>
+              {this.state.summary}
+            </p>
+            <div className="table">
+              <div className="table-row">
+                <div className="table-cell">Department</div>
+                <div className="table-cell right">{this.state.department}</div>
+              </div>
+              <div className="table-row">
+                <div className="table-cell">Location</div>
+                <div className="table-cell right">{this.state.location}</div>
+              </div>
+              <div className="table-row">
+                <div className="table-cell">Birthday</div>
+                <div className="table-cell right">{this.state.birth_date}</div>
+              </div>
+              <div className="table-row">
+                <div className="table-cell">Email</div>
+                <div className="table-cell right">{this.state.email}</div>
+              </div>
+              <div className="table-row">
+                <div className="table-cell">Phone</div>
+                <div className="table-cell right">{this.state.phone_number}</div>
+              </div>
+              <div className="table-row">
+                <div className="table-cell">Interests</div>
+                <div className="table-cell right">{this.state.interests}</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      
     );
   }
 }

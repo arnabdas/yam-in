@@ -22,8 +22,8 @@ export class GroupListItem extends React.Component<IGroupListItemProps, Group>{
   render() {
     return (
       <div className="item">
-        <img className="" src={this.state.mugshot_url} />
-        <span className="">{this.state.full_name}</span>
+        <img className="cell" src={this.state.mugshot_url} />
+        <span className="cell single">{this.state.full_name}</span>
       </div>
     );
   }
@@ -53,7 +53,7 @@ export class GroupList extends React.Component<{}, IGroupListState>{
 
   render() {
     return (
-      <div className="list">
+      <div className="card-list">
         {this.state.groups.map(function (g) {
           return (
             <Link key={g.id} to= {{ pathname: '/groups/feed', state: { groupId: g.id } }}>

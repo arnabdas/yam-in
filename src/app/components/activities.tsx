@@ -20,9 +20,13 @@ export class ActivityListItem extends React.Component<IActivityListItemProps, Ac
   render() {
     return (
       <div className="item">
-        <img className="" src={this.state.user.mugshot_url} />
-        <span className="">{this.state.user.full_name}</span>
-        <span className="">{this.state.message}</span>
+        <img className="cell" src={this.state.user.mugshot_url} />
+        <div className="cell">
+          <Link className="name" key={this.state.user.id} to= {{ pathname: '/profile', state: { userId: this.state.user.id } }}>
+            {this.state.user.full_name}
+          </Link>
+          <div className="list-msg">{this.state.message}</div>
+        </div>
       </div>
     );
   }
@@ -50,7 +54,7 @@ export class ActivityList extends React.Component<IActivityListProps, IActivityL
 
   render() {
     return (
-      <div className="list">
+      <div className="card-list">
         {this.state.activities.map(function (a) {
           return (
             <ActivityListItem key={Math.random() } activity={a}>
