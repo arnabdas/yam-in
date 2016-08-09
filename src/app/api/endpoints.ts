@@ -67,5 +67,9 @@ export const endPoints: EndPointMap = {
   activities: {
     method: 'GET',
     url: 'https://www.yammer.com/api/v1/streams/activities.json'
+  },
+  notifications: {
+    method: 'GET',
+    url: 'https://www.yammer.com/api/v1/streams/notifications.json'
   }
 };

@@ -120,9 +120,6 @@ export class Group extends Reference {
   }
 }
 
-// [[user:1588562818]] has joined [[group:1532669]]
-// [[user:1497198668]] uploaded [[uploaded_file:64426381]]
-
 export class Activity {
   constructor(
     public category = '',

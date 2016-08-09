@@ -131,13 +131,13 @@ export class Utils {
     return formatted;
   }
 
+  private static regexp = /(\[\[[a-z_]+:[0-9]+\]\])/g;
   public static formatMessage(msg: string, refs: { [key: string]: { [id: string]: any } }): { msg: string, relatedObj: any } {
     if (typeof msg !== 'string') {
       return { msg: '', relatedObj: {} };
     }
-    let regexp = /(\[\[[a-z_]+:[0-9]+\]\])/g;
     let match: Array<any>, matches = {}, relatedObj: any;
-    while (match = regexp.exec(msg)) {
+    while (match = this.regexp.exec(msg)) {
       var matched = match[0];
       var indexOfDivider = matched.indexOf(':');
       var type = matched.substring(2, indexOfDivider);

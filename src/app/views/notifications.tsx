@@ -3,23 +3,31 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-// import MessageStore from '../stores/messageStore';
-// import * as MessageActions from '../actions/messageActions';
+import { ActivityList } from '../components/activities';
 
-// import { Feed } from '../components/feed';
+import ActivityStore from '../stores/activityStore';
+import { ActivityActionTypes } from '../actions/types';
+import * as ActivityActions from '../actions/activityActions';
 
 export class Notifications extends React.Component<{}, {}> {
-  componentDidMount() {
-    //MessageActions.refreshProfile();
+  constructor() {
+    super();
+
+    ActivityStore._changeToken = ActivityActionTypes.GET_NOTIFICATIONS;
+    ActivityStore.cleanState();
   }
 
-  render () {
+  componentDidMount() {
+    ActivityActions.getRecentNotifications();
+  }
+
+  render() {
     return (
       <div className="row">
         <div id="header">
         </div>
         <div id="content">
-          <h1>Notification!!!</h1>
+          <ActivityList changeToken={ActivityActionTypes.GET_NOTIFICATIONS}/>
         </div>
       </div>
     );

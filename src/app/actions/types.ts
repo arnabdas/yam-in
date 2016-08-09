@@ -23,5 +23,6 @@ export const GroupActionTypes = {
 };
 
 export const ActivityActionTypes = {
-  GET_ACTIVITIES: 'activities'
+  GET_ACTIVITIES: 'activities',
+  GET_NOTIFICATIONS: 'notifications'
 };

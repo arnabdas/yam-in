@@ -3,14 +3,12 @@
 import * as React from "react";
 import { Link } from 'react-router';
 
-import { IActivityListItemProps, IActivityListState } from '../interfaces/activities';
+import { IActivityListItemProps, IActivityListProps, IActivityListState } from '../interfaces/activities';
 import { Activity } from '../models/yammer';
 
 import { ActivityActionTypes } from '../actions/types';
 
 import ActivityStore from '../stores/activityStore';
-
-import * as ActivityActions from '../actions/activityActions';
 
 export class ActivityListItem extends React.Component<IActivityListItemProps, Activity>{
   constructor(props: IActivityListItemProps) {
@@ -30,18 +28,16 @@ export class ActivityListItem extends React.Component<IActivityListItemProps, Ac
   }
 }
 
-export class ActivityList extends React.Component<{}, IActivityListState>{
+export class ActivityList extends React.Component<IActivityListProps, IActivityListState>{
   _listenerToken: FBEmitter.EventSubscription;
   constructor(props: any) {
     super(props);
-
-    ActivityActions.getSubscribedGroups();
 
     this.state = ActivityStore.getState();
   }
 
   componentDidMount() {
-    this._listenerToken = ActivityStore.addChangeListener(ActivityActionTypes.GET_ACTIVITIES, this._setStateFromStores.bind(this));
+    this._listenerToken = ActivityStore.addChangeListener(this.props.changeToken, this._setStateFromStores.bind(this));
   }
 
   componentWillUnmount() {

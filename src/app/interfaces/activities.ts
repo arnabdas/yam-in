@@ -4,6 +4,10 @@ export interface IActivityListItemProps {
   activity: Activity
 }
 
+export interface IActivityListProps {
+  changeToken: string
+}
+
 export interface IActivityListState {
   activities: Array<Activity>
 }
