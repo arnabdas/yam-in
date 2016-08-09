@@ -1,7 +1,9 @@
 /// <reference path="../../../typings/index.d.ts" />
 
-import { endPoints } from './endpoints';
 import { Utils } from '../helpers';
+import { endPoints } from './endpoints';
+import Emitter from '../events/appEvent';
+import { LoadingActionTypes } from '../actions/types';
 
 let accessToken = Utils.get('newAccessToken');
 
@@ -43,6 +45,9 @@ class BaseDAO {
       if (self.queue.length > 0) {
         self.callNext();
       }
+      else if (self.queue.length === 0) {
+        Emitter.emit(LoadingActionTypes.HIDE_LOADER);
+      }
     });
   }
 
@@ -83,6 +88,7 @@ class BaseDAO {
     this.queue.push(new CallServerTask(url, callConf.method, data, d));
 
     if (this.queue.length === 1) {
+      Emitter.emit(LoadingActionTypes.SHOW_LOADER);
       this.callNext();
     }
 

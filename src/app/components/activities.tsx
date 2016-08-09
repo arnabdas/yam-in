@@ -21,7 +21,7 @@ export class ActivityListItem extends React.Component<IActivityListItemProps, Ac
     return (
       <div className="item">
         <img className="cell" src={this.state.user.mugshot_url} />
-        <div className="cell">
+        <div className="cell desc">
           <Link className="name" key={this.state.user.id} to= {{ pathname: '/profile', state: { userId: this.state.user.id } }}>
             {this.state.user.full_name}
           </Link>

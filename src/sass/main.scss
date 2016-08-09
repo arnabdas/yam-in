@@ -2,6 +2,7 @@
 @import "susy";
 @import "normalize/import-now";
 @import "./_fonts";
+@import "./_loading";
 
 $susy: (
   columns: 6,
@@ -128,40 +129,28 @@ img {
     border-radius: 20px;
   }
 
-  .msg {
-    margin: 5px 0 5px 5px;
-    border: 1px solid #dadada;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    .row {
-      padding: 6px;
-      background-color: #fff;
-      .header {
-        .sender {
-          .pic {
-            @include span(1);
-          }
-          .name {
-            @include span(4);
-            @include user-name();
-          }
-        }
-      }
-    }
-  }
-
   .card-list {
     .item{
       width: 99%;
+      padding: 6px;
       display: table;
       @include item-background();
+      .item-row {
+        display: table-row;
+      }
+      .item-row-group {
+        display: table-row-group;
+      }
       .cell {
         display: table-cell;
-        padding: 6px;
       }
-      div.cell {
+      div.desc {
         width: 82%;
         vertical-align: top;
         line-height: normal;
+        img {
+          float: left;
+        }
       }
       .list-msg {
         margin: 6px 0;
@@ -175,6 +164,10 @@ img {
         vertical-align: middle;
         line-height: normal;
         @include font-matter();
+      }
+      .feed-content {
+        display: table-cell;
+        width: 100%;
       }
     }
   }
@@ -278,4 +271,20 @@ img {
   }
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: .2;
+  z-index: 1050;
+  display: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  display: block;
+  background-color: #000;
+}
 

@@ -58,7 +58,7 @@ export class User extends Reference {
     public interests = '',
     public job_title = '',
     public mugshot_url = 'https://mug0.assets-yammer.com/mugshot/images/48x48/no_photo.png',
-    public mugshot_url_template = '',
+    public mugshot_url_template = 'https://mug0.assets-yammer.com/mugshot/images/{width}x{height}/no_photo.png',
     public name = '',
     public network_id = 0,
     public location = '',

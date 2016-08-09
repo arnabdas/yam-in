@@ -10,7 +10,6 @@ import { Feed } from '../components/feed';
 
 export class Messages extends React.Component<{}, {}> {
   componentDidMount() {
-    console.log('Entered...');
     MessageActions.refreshProfile();
   }
 

@@ -107,15 +107,15 @@ export class UserProfile extends React.Component<IUserProfileProps, User>{
             <span className="name">{this.state.full_name}</span>
             <span className="title">{this.state.job_title}</span>
             <ul className="rep">
-              <li className="followers">
+              <li className="followers" title="Followers">
                 <img src="./img/followers.png" />
                 <span>{this.state.stats.followers}</span>
               </li>
-              <li className="following">
+              <li className="following" title="Following">
                 <img src="./img/following.png" />
                 <span>{this.state.stats.following}</span>
               </li>
-              <li className="updates">
+              <li className="updates" title="Updates">
                 <img src="./img/updates.png" />
                 <span>{this.state.stats.updates}</span>
               </li>

@@ -1,6 +1,8 @@
 /// <reference path="../../../typings/index.d.ts" />
 
 import * as React from "react";
+import { Link } from 'react-router';
+
 import {Utils} from "../helpers";
 
 import {BaseStore} from '../stores/baseStore';
@@ -26,39 +28,33 @@ export class FeedItem extends React.Component<IFeedItemProp, Message> {
     };
 
     return (
-      <div className="msg">
+      <div className="item">
 
-        <div className="row">
-          <div className="header">
-            <div className="sender">
-              <div className="pic">
-                <a href="javascript:void()">
-                  <img src={sender.mugshot_url} />
-                </a>
-              </div>
-              <div className="name">
-                { sender.full_name }
-              </div>
-            </div>
+        <div className="item-row">
+          <div className="cell desc">
+            <img src={sender.mugshot_url} />
+            <Link className="name" to= {{ pathname: '/profile', state: { userId: sender.id } }}>
+              {sender.full_name}
+            </Link>
           </div>
         </div>
 
-        <div className="row">
-          <div dangerouslySetInnerHTML={ innerHtml } />
-          {message.attachments.map(function (attch) {
-            console.log(attch.content);
-            let attchInnerHtml = {
-              __html: attch.content
-            };
-            return (
-              <div key={attch.id} className="row">
-                <h3>{attch.name}</h3>
-                <div dangerouslySetInnerHTML={attchInnerHtml} />
-              </div>
-            );
-          }) }
+        <div className="item-row">
+          <div className="feed-content">
+            <div dangerouslySetInnerHTML={ innerHtml } />
+            {message.attachments.map(function (attch) {
+              let attchInnerHtml = {
+                __html: attch.content
+              };
+              return (
+                <div key={attch.id} className="row">
+                  <h3>{attch.name}</h3>
+                  <div dangerouslySetInnerHTML={attchInnerHtml} />
+                </div>
+              );
+            }) }
+          </div>
         </div>
-
       </div>
     );
   }
@@ -85,7 +81,7 @@ export class Feed extends React.Component<IFeedProp, IFeedState> {
   render() {
     let self = this;
     return (
-      <div>
+      <div className="card-list">
         {
           this.state.messages.map(function (msg) {
             return <FeedItem key={msg.id} message={msg} references={self.state.references} />

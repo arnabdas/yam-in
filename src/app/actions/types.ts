@@ -1,3 +1,8 @@
+export const LoadingActionTypes = {
+  SHOW_LOADER: 'loader.show',
+  HIDE_LOADER: 'loader.hide'
+};
+
 export const FeedActionTypes = {
   ALL_FEED: 'allFeed',
   TOP_FEED: 'topFeed',
