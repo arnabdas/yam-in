@@ -26,6 +26,7 @@ export class GroupFeeds extends React.Component<{}, {}> {
     return (
       <div className="row">
         <div id="header">
+          <span className="uppercase page-name">Group Feed</span>
         </div>
         <div id="content">
           <Feed store={FeedStore}/>

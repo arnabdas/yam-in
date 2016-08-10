@@ -32,8 +32,8 @@ export class FeedItem extends React.Component<IFeedItemProp, Message> {
 
         <div className="item-row">
           <div className="cell desc">
-            <img src={sender.mugshot_url} />
             <Link className="name" to= {{ pathname: '/profile', state: { userId: sender.id } }}>
+              <img src={sender.mugshot_url} />
               {sender.full_name}
             </Link>
           </div>

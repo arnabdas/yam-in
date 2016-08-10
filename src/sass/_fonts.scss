@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'yamin';
   src:
-    url('fonts/yamin.ttf?qkauxw') format('truetype'),
-    url('fonts/yamin.woff?qkauxw') format('woff'),
-    url('fonts/yamin.svg?qkauxw#yamin') format('svg');
+    url('fonts/yamin.ttf?7ldr65') format('truetype'),
+    url('fonts/yamin.woff?7ldr65') format('woff'),
+    url('fonts/yamin.svg?7ldr65#yamin') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.yamcon-plus:before {
+  content: "\e114";
+}
 .yamcon-add:before {
   content: "\e145";
 }
@@ -41,6 +53,9 @@
 }
 .yamcon-info:before {
   content: "\e88e";
+}
+.yamcon-back-arrow:before {
+  content: "\e317";
 }
 .yamcon-notifications:before {
   content: "\e7f4";

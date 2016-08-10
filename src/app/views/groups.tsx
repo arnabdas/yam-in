@@ -10,6 +10,7 @@ export class Groups extends React.Component<{}, {}> {
     return (
       <div className="row">
         <div id="header">
+          <span className="uppercase page-name">Groups</span>
         </div>
         <div id="content">
           <GroupList />

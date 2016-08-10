@@ -100,6 +100,7 @@ export class UserProfile extends React.Component<IUserProfileProps, User>{
     return (
       <div className="row">
         <div id="header">
+          <span className="uppercase page-name">Profile</span>
         </div>
         <div id="content">
           <div className="user profile">
