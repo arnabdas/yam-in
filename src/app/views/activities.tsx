@@ -24,9 +24,6 @@ export class Activities extends React.Component<{}, {}> {
   render() {
     return (
       <div className="row">
-        <div id="header">
-          <span className="uppercase page-name">Activities</span>
-        </div>
         <div id="content">
           <ActivityList changeToken={ActivityActionTypes.GET_ACTIVITIES} />
         </div>

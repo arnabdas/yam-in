@@ -70,6 +70,10 @@ img {
   }
 }
 
+.hidden {
+  display: none !important;
+}
+
 .previous-route {
   cursor: pointer;
   position: absolute;
@@ -88,41 +92,76 @@ img {
   text-transform: uppercase;
 }
 
+.vertical-dots {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  background-color: #5e5e5e;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    background-color: inherit;
+    border-radius: inherit;
+  }
+
+  &:before {
+    top: 9px;
+  }
+
+  &:after {
+    top: 18px;
+  }
+}
+
 #header,#footer,#content { position:absolute; right:0;left:0}
 
 #header{
   border: 0 0 1px 0 solid #eee;
 	height:55px; top:0;
 	background-color: #fff;
-  display: inline-flex;
+  text-align: center;
+  padding-top: 14px;
   .page-name {
     color: #386cbb;
     margin: auto;
   }
-  ul {
-    display: inline;
-    list-style: none;
-    &::before {
-      display: table;
-      content: " ";
+  a {
+    color: #5e5e5e;
+    &.active {
+      color: #386cbb;
     }
-    &::after {
-      clear: both;
-    }
-    li {
-      margin: 10px;
-      float: left;
-      position: relative;
-      display: block;
-      top: -6px;    
+    span {
+      font-size: 1.7em;
+      font-weight: 700;
+      padding: 0 5px;
+      &.unread-count {
+        @include transition(opacity .2s ease-out, transform .2s ease-out);
+        background-color: #d1423b;
+        color: #fff;
+        border-radius: 50%;
+        margin-left: 0;
+        padding: 1px 2px 2px;
+        font-size: 9px;
+        position: absolute;
+        top: -8px;
+        right: -5px;
+        min-width: 11px;
+        min-height: 12px;
+      }
     }
   }
 }
 
 #content{
   top:55px;
-  bottom:27px;
-  height: 433px;
+  bottom: 0;
+  height: 460px;
   overflow: auto;
   @include container;
   /*overflow: hidden;  use this if don't want any window scrollbars and use an inner element for scrolling*/
@@ -140,6 +179,36 @@ img {
   &::-webkit-scrollbar-track {
     background: #ddd;
     border-radius: 20px;
+  }
+  
+  .vertical-dots {
+    float: right;
+    position: fixed;
+    right: 14px;
+  }
+
+  .in-page-navs {
+    float: right;
+    position: fixed;
+    right: 6px;
+    padding-top: 10px;
+    ul {
+      background-clip: padding-box;
+      border: 1px solid #ccc;
+      border: 1px solid rgba(0,0,0,.15);
+      border-radius: 4px;
+      -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+      box-shadow: 0 6px 12px rgba(0,0,0,.175);
+      list-style: none;
+      margin-top: 28px;
+      margin-right: 4px;
+      padding: 5px;
+      background-color: #fff;
+      li:hover {
+        text-decoration: underline;
+        text-decoration-style: dashed;
+      }
+    }
   }
 
   .card-list {
@@ -265,33 +334,6 @@ img {
 	height:27px; top: 493px;
   border: 1px 0 0 0 solid #eee;
 	background-color: #fff;
-  a {
-    width: 14.2%;
-    float: left;
-    color: #5e5e5e;
-    text-align: center;
-    &.active {
-      color: #386cbb;
-    }
-    span {
-      font-size: 2em;
-      font-weight: 700;
-      &.unread-count {
-        @include transition(opacity .2s ease-out, transform .2s ease-out);
-        background-color: #d1423b;
-        color: #fff;
-        border-radius: 50%;
-        margin-left: 0;
-        padding: 1px 2px 2px;
-        font-size: 9px;
-        position: absolute;
-        top: -8px;
-        right: -5px;
-        min-width: 11px;
-        min-height: 12px;
-      }
-    }
-  }
 }
 
 .modal {

@@ -24,9 +24,6 @@ export class Notifications extends React.Component<{}, {}> {
   render() {
     return (
       <div className="row">
-        <div id="header">
-          <span className="uppercase page-name">Notifications</span>
-        </div>
         <div id="content">
           <ActivityList changeToken={ActivityActionTypes.GET_NOTIFICATIONS}/>
         </div>

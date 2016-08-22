@@ -16,9 +16,6 @@ export class Messages extends React.Component<{}, {}> {
   render () {
     return (
       <div className="row">
-        <div id="header">
-          <span className="uppercase page-name">Messages</span>
-        </div>
         <div id="content">
           <Feed store={MessageStore}/>
         </div>

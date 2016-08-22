@@ -7,9 +7,6 @@ export class About extends React.Component<{}, {}> {
   render () {
     return (
       <div className="row">
-        <div id="header">
-          <span className="uppercase page-name">About</span>
-        </div>
         <div id="content">
           <div className="about">
             <img src="./img/plugin-logo-default.png" title="Yam'in" />

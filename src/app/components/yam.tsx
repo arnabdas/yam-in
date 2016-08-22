@@ -78,20 +78,7 @@ export class YamApp extends React.Component<{}, IYamAppState> {
   render() {
     return (
       <div className="row">
-        <span id="previousRoute"
-          onClick={this._navigateBack}
-          className="previous-route"></span>
-        <img className="circle profile" src={this.state.currentUser.mugshot_url} />
-        <div className="row">
-          {this.props.children}
-        </div>
-        <div id="loading-icon">
-          <div className="modal"></div>
-          <div className="la-square-spin la-dark la-2x">
-            <div></div>
-          </div>
-        </div>
-        <div id="footer">
+        <div id="header">
           <IndexLink to="/" activeClassName="active" title="Home">
             <span className="yamcon-home" />
           </IndexLink>
@@ -117,7 +104,21 @@ export class YamApp extends React.Component<{}, IYamAppState> {
           <Link to="/about"activeClassName="active" title="About">
             <span className="yamcon-info" />
           </Link>
-        </div>        
+        </div>
+        <span id="previousRoute"
+          onClick={this._navigateBack}
+          className="previous-route">
+        </span>
+        <img className="circle profile" src={this.state.currentUser.mugshot_url} />
+        <div className="row">
+          {this.props.children}
+        </div>
+        <div id="loading-icon">
+          <div className="modal"></div>
+          <div className="la-square-spin la-dark la-2x">
+            <div></div>
+          </div>
+        </div>
       </div>
     );
   }

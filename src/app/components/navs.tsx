@@ -15,6 +15,7 @@ export interface INav {
 
 export interface INavProps {
   dispatcher: Dispatcher<AppEvent>
+  clickCallback?: () => void
 }
 export interface INavState {
   navs: Array<INav>
@@ -32,6 +33,9 @@ export class NavPills extends React.Component<INavProps, INavState> {
   handleClick(id: string) {
     this.props.dispatcher.dispatch(new AppEvent(id));
     this.makeActive(id);
+    if (this.props.clickCallback) {
+      this.props.clickCallback();
+    }
     return false;
   }
 
@@ -56,7 +60,7 @@ export class NavPills extends React.Component<INavProps, INavState> {
         { this.state.navs.map(function (nav: INav) {
           return (
             <li key={nav.id}>
-              <a href="#" className="uppercase" data-nav={ nav.id }
+              <a href="#" data-nav={ nav.id }
                 onClick={ this.handleClick.bind(this, nav.id) }>{nav.displayText}</a>
             </li>
           );
